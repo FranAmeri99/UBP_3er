@@ -13,14 +13,14 @@ int main() {
     int x;
     cout<<"ingrese cuantos numeros va a cargar: \n";
     cin>>x;
-    vector<int> vector[x];
+    vector<int> vector(x);
     for (int i = 0; i < x ; ++i) {
-
-        vector.insert(i, ran());
+        int aux =ran();
+        vector[i]=aux;
         ordenar(vector,x);
-   
+  
     }
-    
+     
     return 0;
 }
 
