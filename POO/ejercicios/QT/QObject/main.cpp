@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
     Luis->setNombre("Luis");
     Luis->setEdad(35);
     Luis->setSalario(40000);
-
+    qDebug<<Luis->getNombre();
     return a.exec();
 }
 
