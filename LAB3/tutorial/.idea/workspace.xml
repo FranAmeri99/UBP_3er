@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="00c95604-be4b-4fd5-87e3-9d25c80403ba" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../AM/pdf/Funcion_Límite_Derivada- Variable compleja/Funciones de variable compleja_Parte 1.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -46,13 +58,35 @@
       <recent name="$PROJECT_DIR$/tutorial 10" />
     </key>
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="00c95604-be4b-4fd5-87e3-9d25c80403ba" name="Default Changelist" comment="" />
+      <created>1585686752290</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585686752290</updated>
+      <workItem from="1585686756114" duration="349000" />
+    </task>
+    <servers />
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="541" y="208" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585686982406">
+      <screen x="70" y="27" width="1850" height="1053" />
+    </state>
+    <state x="541" y="208" key="#com.intellij.execution.impl.EditConfigurationsDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1585686982406" />
     <state x="706" y="358" width="567" height="397" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585425679355">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="706" y="358" width="567" height="397" key="#com.intellij.fileTypes.FileTypeChooser/70.27.1850.1053@70.27.1850.1053" timestamp="1585425679355" />
+    <state x="724" y="404" key="com.intellij.ide.util.TipDialog" timestamp="1585686768207">
+      <screen x="70" y="27" width="1850" height="1053" />
+    </state>
+    <state x="724" y="404" key="com.intellij.ide.util.TipDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1585686768207" />
   </component>
 </project>
