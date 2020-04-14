@@ -20,21 +20,27 @@ int main(int argc, char **argv)
     pb2.resize(400,200);
     QPushButton *p_pb2;
     p_pb2 = &pb2;
-    QPushButton pb3("Cerrar App"); //segundo boton
     pb2.resize(400,200);
+    QPushButton pb3("Cerrar App"); //segundo boton
     QPushButton *p_pb3;
     p_pb3 = &pb3;
+    pb3.resize(400,200);
+    QPushButton pb4("Cerrar App"); //segundo boton
+    QPushButton *p_pb4;
+    p_pb4 = &pb4;
+    pb3.resize(400,200);
+
   //  pb2.show();
 
 
 
 
         QObject::connect( &pb1, SIGNAL( pressed() ), &pb2, SLOT( show() ) );
-        QObject::connect( &pb1, SIGNAL( pressed() ), &pb1, SLOT( close() ) );
+        QObject::connect( &pb1, SIGNAL( pressed() ), &pb1, SLOT( hide() ) );
 
         QObject::connect( &pb2, SIGNAL( pressed() ), &pb3, SLOT( show() ) );
-
         QObject::connect( &pb2, SIGNAL( pressed() ), &pb2, SLOT( close() ) );
+
         QObject::connect( &pb3, SIGNAL( pressed() ), &app, SLOT( quit() ) );
 
     return app.exec();
