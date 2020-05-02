@@ -10,7 +10,7 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
     teSelect = new QTableWidget();
    // teSelect->setRowCount(3);
     teSelect->setColumnCount(10);
-    QStringList headers = { "ESTADO", "PAIS", "LATITUD","longitud","CASO1 ","CASO1 ","CASO1 ","CASO1 ","CASO1 ","CASO1 "};
+    QStringList headers = { "ESTADO", "PAIS", "LATITUD","longitud","30/04/20 "};
     teSelect->setHorizontalHeaderLabels(headers);
 
     layout->addWidget(pbSelect,0,0);
@@ -110,8 +110,8 @@ void ventana::MostrarDatos(){
     teSelect->setItem(fila, 1,new QTableWidgetItem(mostrar.value(1).toByteArray().constData()));
     teSelect->setItem(fila, 2,new QTableWidgetItem(mostrar.value(2).toByteArray().constData()));
     teSelect->setItem(fila, 3,new QTableWidgetItem(mostrar.value(3).toByteArray().constData()));
-    teSelect->setItem(fila, 4,new QTableWidgetItem(mostrar.value(4).toByteArray().constData()));
-    teSelect->setItem(fila, 5,new QTableWidgetItem(mostrar.value(130).toByteArray().constData()));
+    teSelect->setItem(fila, 4,new QTableWidgetItem(mostrar.value(103).toByteArray().constData()));
+    //teSelect->setItem(fila, 5,new QTableWidgetItem(mostrar.value().toByteArray().constData()));
 
     fila ++;
 
