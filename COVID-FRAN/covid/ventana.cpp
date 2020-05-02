@@ -1,5 +1,6 @@
 #include "ventana.h"
 #include <QFile>
+#include<QDate>
 ventana::ventana(QWidget *parent) : QWidget(parent)
 {
 //Ventana
@@ -9,7 +10,7 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
     pbSalir = new QPushButton("Salir");
     teSelect = new QTableWidget();
    // teSelect->setRowCount(3);
-    teSelect->setColumnCount(10);
+    teSelect->setColumnCount(5);
     QStringList headers = { "ESTADO", "PAIS", "LATITUD","longitud","30/04/20 "};
     teSelect->setHorizontalHeaderLabels(headers);
 
@@ -89,7 +90,8 @@ void ventana::MostrarDatos(){
     qDebug()<<"\n joya 3";
 
     QString consulta;
-    consulta.append("SELECT * FROM recuperados");
+
+    consulta.append("SELECT * FROM recuperados WHERE Country = 'Argentina' ");
 
     QSqlQuery mostrar;
     mostrar.prepare(consulta);
@@ -106,8 +108,8 @@ void ventana::MostrarDatos(){
     while(mostrar.next()){
 
     teSelect->insertRow(fila);
-    teSelect->setItem(fila, 0,new QTableWidgetItem(mostrar.value(0).toByteArray().constData()));
     teSelect->setItem(fila, 1,new QTableWidgetItem(mostrar.value(1).toByteArray().constData()));
+    teSelect->setItem(fila, 0,new QTableWidgetItem(mostrar.value(0).toByteArray().constData()));
     teSelect->setItem(fila, 2,new QTableWidgetItem(mostrar.value(2).toByteArray().constData()));
     teSelect->setItem(fila, 3,new QTableWidgetItem(mostrar.value(3).toByteArray().constData()));
     teSelect->setItem(fila, 4,new QTableWidgetItem(mostrar.value(103).toByteArray().constData()));
