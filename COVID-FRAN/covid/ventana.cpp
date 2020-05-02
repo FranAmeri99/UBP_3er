@@ -9,12 +9,14 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
     pbSelect = new QPushButton("BUSCAR");
     pbSalir = new QPushButton("Salir");
     teSelect = new QTableWidget();
-   // teSelect->setRowCount(3);
     teSelect->setColumnCount(5);
+
+    //Forma rancia de convertir QDate con la fecha a string
+
     QDate actual2;
     QDate aux = actual2.currentDate();
     QString auxS = aux.toString();
-    qDebug()<<"------------ "<<QDate::currentDate()<<"---------------";
+
     QStringList headers = { "ESTADO", "PAIS", "LATITUD","longitud",auxS};
     teSelect->setHorizontalHeaderLabels(headers);
 
@@ -23,10 +25,12 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
     layout->addWidget(teSelect,1,0,2,2);
     box->setLayout(layout);
     box->show();
+
 //Base de datos
 
     qDebug()<<"iniciando";
     QString nombre;
+    //si la encutra la abre, sino la crea
     nombre.append("BaseDeDatos.sqlite");
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(nombre);
@@ -41,7 +45,7 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
 }
 
 void ventana::CrearTablaUsuario()
-{
+{/*
     qDebug()<<"\n CREAR";
 
     QString consulta;
@@ -60,12 +64,12 @@ void ventana::CrearTablaUsuario()
     }
     else {
         qDebug()<<"\n NO Creado";
-    }
+    }*/
     //    CrearTablaUsuario();
 }
 
 void ventana::InsertarUsuario()
-{
+{/*
     qDebug()<<"\n Insertar";
 
     QString consulta;
@@ -85,7 +89,7 @@ void ventana::InsertarUsuario()
     }
     else {
         qDebug()<<"\n NO Insertado ";
-    }
+    }*/
 }
 
 void ventana::MostrarDatos(){
@@ -93,6 +97,8 @@ void ventana::MostrarDatos(){
     qDebug()<<"\n joya 3";
 
     QString consulta;
+    //hacer mas bonito el select para que solo muestre las columnas de Country, Province, lat , long, QDate acutal::currentDate()
+    //por el momento traigo todas las columasn
 
     consulta.append("SELECT * FROM recuperados WHERE Country = 'Argentina' ");
 
@@ -110,19 +116,21 @@ void ventana::MostrarDatos(){
     teSelect->setRowCount(0);
     while(mostrar.next()){
 
+
     QDate inicio(2020, 1, 22);
-    QDate actual(2020, 4, 30);
-
-    int a = inicio.daysTo(actual)+4;
-
-
+    QDate actual2;
+    QDate aux = actual2.currentDate();
+    int a = inicio.daysTo(aux)+3;
+    qDebug()<<"========="<<a;
+    //como muestro las primeas cuatro columnas en orden correspondiente a la tabla
+    //la quinta columna trae los datps de la ultima columna de la tabla
+    //que es una diferencia entre la fecha de la fecha actual menos la de inicio mas 4 (columnas estado, pais, lat, long
     teSelect->insertRow(fila);
     teSelect->setItem(fila, 1,new QTableWidgetItem(mostrar.value(1).toByteArray().constData()));
     teSelect->setItem(fila, 0,new QTableWidgetItem(mostrar.value(0).toByteArray().constData()));
     teSelect->setItem(fila, 2,new QTableWidgetItem(mostrar.value(2).toByteArray().constData()));
     teSelect->setItem(fila, 3,new QTableWidgetItem(mostrar.value(3).toByteArray().constData()));
     teSelect->setItem(fila, 4,new QTableWidgetItem(mostrar.value(a).toByteArray().constData()));
-    //teSelect->setItem(fila, 5,new QTableWidgetItem(mostrar.value().toByteArray().constData()));
 
     fila ++;
 
