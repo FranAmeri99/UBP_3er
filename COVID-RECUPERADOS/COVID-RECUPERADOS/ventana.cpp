@@ -13,14 +13,6 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
     teSelect = new QTableWidget();
     teSelect->setColumnCount(5);
 
-    //Forma rancia de convertir QDate con la fecha a string
-/*
-    QDate actual2;
-    QDate aux = actual2.currentDate();
-    QString auxS = aux.toString();
-    qDebug()<<"------------------",auxS,"aaaaaaaa";
-    QStringList headers = { "ESTADO", "PAIS", "LATITUD","longitud",auxS};
-    teSelect->setHorizontalHeaderLabels(headers);*/
 
     layout->addWidget(pbSelect,0,0,1,2);
    // layout->addWidget(pbSalir,0,1);

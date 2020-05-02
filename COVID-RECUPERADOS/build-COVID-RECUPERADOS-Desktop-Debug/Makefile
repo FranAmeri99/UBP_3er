@@ -247,6 +247,7 @@ DIST          = ../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/qt_config.prf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_post.prf \
+		../COVID-RECUPERADOS/.qmake.stash \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/toolchain.prf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -470,6 +471,7 @@ Makefile: ../COVID-RECUPERADOS/COVID-RECUPERADOS.pro ../../../Qt5.14.2/5.14.2/gc
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/qt_config.prf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/toolchain.prf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -682,6 +684,7 @@ Makefile: ../COVID-RECUPERADOS/COVID-RECUPERADOS.pro ../../../Qt5.14.2/5.14.2/gc
 ../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/qt_config.prf:
 ../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/toolchain.prf:
 ../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/default_pre.prf:
