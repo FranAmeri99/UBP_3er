@@ -9,8 +9,8 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
     pbSalir = new QPushButton("Salir");
     teSelect = new QTableWidget();
    // teSelect->setRowCount(3);
-    teSelect->setColumnCount(3);
-    QStringList headers = { "NOMBRE", "APELLIDO", "EDAD", "CLASE" };
+    teSelect->setColumnCount(10);
+    QStringList headers = { "ESTADO", "PAIS", "LATITUD","longitud","CASO1 ","CASO1 ","CASO1 ","CASO1 ","CASO1 ","CASO1 "};
     teSelect->setHorizontalHeaderLabels(headers);
 
     layout->addWidget(pbSelect,0,0);
@@ -19,7 +19,6 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
 
     box->setLayout(layout);
     box->show();
-    teSelect->setColumnCount(4);
 //Base de datos
 
     qDebug()<<"iniciando";
@@ -42,10 +41,6 @@ void ventana::CrearTablaUsuario()
     qDebug()<<"\n CREAR";
 
     QString consulta;
-    QFile filea("crear.txt");
-   // filea.open(QIODevice::ReadOnly); // <<--- AQUI
-    QTextStream texto(&filea);
-    qDebug()<<texto.readAll();
 
     consulta.append("CREATE TABLE IF NOT EXISTS USUARIO("
                     "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -94,7 +89,7 @@ void ventana::MostrarDatos(){
     qDebug()<<"\n joya 3";
 
     QString consulta;
-    consulta.append("SELECT * FROM USUARIO WHERE NOMBRE = 'pepe' ");
+    consulta.append("SELECT * FROM recuperados");
 
     QSqlQuery mostrar;
     mostrar.prepare(consulta);
@@ -111,10 +106,12 @@ void ventana::MostrarDatos(){
     while(mostrar.next()){
 
     teSelect->insertRow(fila);
-    teSelect->setItem(fila, 0,new QTableWidgetItem(mostrar.value(1).toByteArray().constData()));
-    teSelect->setItem(fila, 1,new QTableWidgetItem(mostrar.value(2).toByteArray().constData()));
-    teSelect->setItem(fila, 2,new QTableWidgetItem(mostrar.value(3).toByteArray().constData()));
-    teSelect->setItem(fila, 3,new QTableWidgetItem(mostrar.value(4).toByteArray().constData()));
+    teSelect->setItem(fila, 0,new QTableWidgetItem(mostrar.value(0).toByteArray().constData()));
+    teSelect->setItem(fila, 1,new QTableWidgetItem(mostrar.value(1).toByteArray().constData()));
+    teSelect->setItem(fila, 2,new QTableWidgetItem(mostrar.value(2).toByteArray().constData()));
+    teSelect->setItem(fila, 3,new QTableWidgetItem(mostrar.value(3).toByteArray().constData()));
+    teSelect->setItem(fila, 4,new QTableWidgetItem(mostrar.value(4).toByteArray().constData()));
+    teSelect->setItem(fila, 5,new QTableWidgetItem(mostrar.value(130).toByteArray().constData()));
 
     fila ++;
 
@@ -122,9 +119,9 @@ void ventana::MostrarDatos(){
 }
 
 void ventana::slot_Insertar(){
-   CrearTablaUsuario();
+   //CrearTablaUsuario();
 
-   InsertarUsuario();
+   //InsertarUsuario();
    MostrarDatos();
 
 
