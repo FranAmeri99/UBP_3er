@@ -1,6 +1,6 @@
-#include "ventana.h"
+﻿#include "ventana.h"
 #include <QFile>
-#include<QDate>
+#include<QDateTime>
 ventana::ventana(QWidget *parent) : QWidget(parent)
 {
 //Ventana
@@ -11,13 +11,16 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
     teSelect = new QTableWidget();
    // teSelect->setRowCount(3);
     teSelect->setColumnCount(5);
-    QStringList headers = { "ESTADO", "PAIS", "LATITUD","longitud","30/04/20 "};
+    QDate actual2;
+    QDate aux = actual2.currentDate();
+    QString auxS = aux.toString();
+    qDebug()<<"------------ "<<QDate::currentDate()<<"---------------";
+    QStringList headers = { "ESTADO", "PAIS", "LATITUD","longitud",auxS};
     teSelect->setHorizontalHeaderLabels(headers);
 
     layout->addWidget(pbSelect,0,0);
-    layout->addWidget(pbSalir,0,1);
+   // layout->addWidget(pbSalir,0,1);
     layout->addWidget(teSelect,1,0,2,2);
-
     box->setLayout(layout);
     box->show();
 //Base de datos
@@ -34,7 +37,7 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
        qDebug()<<"todo mal";
    }
    connect(pbSelect,SIGNAL(pressed()),this,SLOT(slot_Insertar()));
-   connect(pbSalir,SIGNAL(pressed()),this,SLOT(close()));
+  // connect(pbSalir,SIGNAL(pressed()),this, SLOT(close()));
 }
 
 void ventana::CrearTablaUsuario()
@@ -107,12 +110,18 @@ void ventana::MostrarDatos(){
     teSelect->setRowCount(0);
     while(mostrar.next()){
 
+    QDate inicio(2020, 1, 22);
+    QDate actual(2020, 4, 30);
+
+    int a = inicio.daysTo(actual)+4;
+
+
     teSelect->insertRow(fila);
     teSelect->setItem(fila, 1,new QTableWidgetItem(mostrar.value(1).toByteArray().constData()));
     teSelect->setItem(fila, 0,new QTableWidgetItem(mostrar.value(0).toByteArray().constData()));
     teSelect->setItem(fila, 2,new QTableWidgetItem(mostrar.value(2).toByteArray().constData()));
     teSelect->setItem(fila, 3,new QTableWidgetItem(mostrar.value(3).toByteArray().constData()));
-    teSelect->setItem(fila, 4,new QTableWidgetItem(mostrar.value(103).toByteArray().constData()));
+    teSelect->setItem(fila, 4,new QTableWidgetItem(mostrar.value(a).toByteArray().constData()));
     //teSelect->setItem(fila, 5,new QTableWidgetItem(mostrar.value().toByteArray().constData()));
 
     fila ++;
