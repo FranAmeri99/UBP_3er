@@ -11,6 +11,9 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QTableWidget>
+#include <QComboBox>
+#include <QDateEdit>
+
 class ventana : public QWidget
 {
     Q_OBJECT
@@ -20,6 +23,7 @@ public:
     void InsertarUsuario();
     void MostrarDatos();
     void Describe();
+    void cargar_cb();
 private:
     QGroupBox *box;
     QGridLayout *layout;
@@ -27,10 +31,15 @@ private:
     QPushButton *pbSalir;
     QTableWidget *teSelect;
     QLayout * lSelect;
+    QComboBox * cb_pais;
+    QComboBox * cb_estado;
+    QDateEdit * de_dia;
 
     QSqlDatabase db;
 public slots:
     void slot_Insertar();
+    void slot_Click_Pais();
+
 
 
 
