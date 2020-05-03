@@ -13,6 +13,13 @@
 #include <QTableWidget>
 #include <QComboBox>
 #include <QDateEdit>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QString>
+#include <QFile>
+
 
 class ventana : public QWidget
 {
@@ -36,12 +43,16 @@ private:
     QDateEdit * de_dia;
 
     QSqlDatabase db;
+
+    QByteArray *texto;
+    QFile * archivo;
+    QNetworkAccessManager *manager;
+    QPushButton *botonPresionado;
+
 public slots:
     void slot_Insertar();
-    void slot_Click_Pais();
-
-
-
+    void slot_respuesta(QNetworkReply *);
+    void slot_solicitar();
 
 signals:
 

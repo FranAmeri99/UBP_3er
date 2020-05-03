@@ -13,17 +13,26 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
     pbSalir = new QPushButton("Salir");
     teSelect = new QTableWidget();
     teSelect->setColumnCount(5);
+
     cb_pais = new QComboBox();
     cb_estado = new QComboBox();
     de_dia = new QDateEdit();
-    //cb_pais->addItem("Alemania");
+
+
+
     layout->addWidget(cb_pais,0,3,1,1);
- //   layout->addWidget(de_dia,2,3,1,1);
     layout->addWidget(pbSelect,3,3,1,1);
     layout->addWidget(teSelect,0,0,3,3);
     box->setLayout(layout);
     box->show();
 
+    manager = new QNetworkAccessManager;
+    texto = new QByteArray;
+    archivo = new QFile;
+    archivo->setFileName("documento.csv");
+    archivo->open(QIODevice::WriteOnly);
+    slot_solicitar();
+    connect(manager,SIGNAL(finished(QNetworkReply *)),this,SLOT(slot_respuesta(QNetworkReply *)));
 //Base de datos
 
     qDebug()<<"iniciando";
@@ -51,20 +60,16 @@ void ventana::CrearTablaUsuario()
 
     QString consulta;
 
-    consulta.append("CREATE TABLE IF NOT EXISTS USUARIO("
-                    "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    "NOMBRE VARCHAR(100),"
-                    "APELLIDO VARCHAR(100),"
-                    "EDAD INTEGER NOT NULL,"
-                    "CLASE INTEGER NOT NULL"
+    consulta.append("CREATE VIRTUAL TABLE IF NOT EXISTS USUARIO2 USING CSV ('documento.csv')"
+
                     ");");
     QSqlQuery crear;
     crear.prepare(consulta);
     if(crear.exec()){
-        qDebug()<<"\n Creado";
+        qDebug()<<"\n Creado2";
     }
     else {
-        qDebug()<<"\n NO Creado";
+        qDebug()<<"\n NO Creado"<<crear.lastError();
     }
     //    CrearTablaUsuario();
 }
@@ -89,7 +94,7 @@ void ventana::InsertarUsuario()
         qDebug()<<"\n Insertado";
     }
     else {
-        qDebug()<<"\n NO Insertado ";
+        qDebug()<<"\n NO Insertado "<<insertar.lastError();
     }
 }
 
@@ -204,12 +209,23 @@ void ventana::cargar_cb()
 void ventana::slot_Insertar(){
    CrearTablaUsuario();
 
+
+
    InsertarUsuario();
    MostrarDatos();
 
 }
 
-void ventana::slot_Click_Pais()
+void ventana::slot_respuesta(QNetworkReply *reply)
 {
+    *texto = reply->readAll();
+        archivo->write(*texto);
+}
 
+void ventana::slot_solicitar()
+{
+    QString ur = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv";
+    QUrl url(ur);
+    manager->get(QNetworkRequest(url));
+    botonPresionado = (QPushButton*) this->sender();
 }

@@ -1,4 +1,4 @@
-QT += widgets sql
+QT += network widgets sql
 
 
 SOURCES += \
