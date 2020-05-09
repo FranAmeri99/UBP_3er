@@ -31,7 +31,7 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
     manager = new QNetworkAccessManager;
     texto = new QByteArray;
     archivo = new QFile;
-    archivo->setFileName("../db/documento.txt");
+    archivo->setFileName("../db/documento2.txt");
     archivo->open(QIODevice::ReadWrite);
 
 

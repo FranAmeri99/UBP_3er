@@ -1,54 +1,60 @@
-#ifndef CREAT_TABLE_H
+﻿#ifndef CREAT_TABLE_H
 #define CREAT_TABLE_H
 
-#include"ventana.h"
+#include "ventana.h"
+#include <QDateTime>
 void ventana::CrearTablaUsuario()
 {
-    QByteArray line = archivo->readLine();
+
+    QDate inicio(2020,1,22);
+    QDate actual2;
+    QDate actual = actual2.currentDate();
+    int a = inicio.daysTo(actual);
 
     qDebug()<<"\n CREAR TABLA RECUPERADOS";
-    QByteArray consulta= "CREATE TABLE IF NOT EXISTS [recuperados] ("
-            "Province VARCHAR ,"
-            "Country VARCHAR ,"
-            "Lat FLOAT,"
-            "Long FLOAT,";
-    consulta.append(line);
 
-    int tamano_consulta = consulta.size();
-    int cantidad_a_agregar = consulta.count(',');
-    int arreglo_indice[cantidad_a_agregar];
-    int w = 0;
-    //for guardo en un arreglo las posiciones en donde debo
-    //agregar el VARCHAR (30)
-    for (int i = 0; i <tamano_consulta;i++) {
-        if(consulta[i]==','){
-            arreglo_indice[w]= i;
-            w++;
+    QByteArray consulta= "CREATE TABLE RECUPERADOS22 ("
+            " Province VARCHAR NULL ,"
+            " Country VARCHAR NULL ,"
+            " Lat VARCHAR NULL ,"
+            " Long VARCHAR NULL ";
+    int mes = actual.month();
+
+    for (int i=1; i<=mes ;i++) {
+        QDate principo(2020,i,1);
+
+        for (int j=1;j<=principo.daysInMonth();j++) {
+               QString fecha;
+               int anio = 20;
+               char d = 'd';
+               char m = 'm';
+               char y = 'y';
+               QString coma = ",";
+               QString text = " VARCHAR NULL ";
+               fecha = QString("%1 %2%3%4%5%6%7%8").arg(coma).arg(d).arg(j).arg(m).arg(i).arg(y).arg(anio).arg(text);
+               consulta.append(fecha);
         }
-    }
-    //for donde inserto el varchar()
-    //lo recorro de atras para adelante para no andar recalculando
-    // las posiciones
 
-    for (w = cantidad_a_agregar-1;w>=0;w--) {
-        int indice = arreglo_indice[w];
-        consulta.insert(indice," TEXT");
     }
-   // qDebug()<<"\n $$$$$$$$$$$$ \n" <<consulta;
-   // archivo->write(consulta);
-   // consulta.append(" TEXT");
-   // qDebug()<<"\n $$$$$$$$$$$$ \n" <<consulta;
-    //archivo2->flush();
-    //archivo2->close();
-    /*  QSqlQuery crear;
-    crear.prepare(consulta);
-    if(crear.exec()){
-        qDebug()<<"\n Creado2";
+    QString final = " );";
+    consulta.append(final);
+    QFile query;
+    query.setFileName("../db/consulta.txt");
+    query.open(QIODevice::WriteOnly|QIODevice::Text);
+    query.write(consulta);
+    query.close();
+    query.flush();
+
+    QSqlQuery insertar;
+    insertar.prepare(consulta);
+    if(insertar.exec()){
+        qDebug()<<"\n Insertado";
     }
     else {
-        qDebug()<<"\n NO Creado"<<crear.lastError();
+        qDebug()<<"\n NO Insertado "<<insertar.lastError();
     }
-*/
+
+
 }
 
 

@@ -19,8 +19,6 @@ void ventana::MostrarDatos(){
     QSqlQuery descrinbe;
     descrinbe.prepare(desribe);
     QString consulta;
-    //consulta.append("SELECT * FROM recuperados WHERE Country = 'Argentina' ");
-    //consulta.append("SELECT * ");
     consulta.append("SELECT Country, Province, Lat, Long, [");
 
 
