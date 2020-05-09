@@ -60,6 +60,7 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
 void ventana::slot_Insertar(){
    CrearTablaUsuario();
    InsertarUsuario();
+   process_line();
    MostrarDatos();
 }
 
@@ -76,11 +77,8 @@ void ventana:: process_line(){
 void ventana:: process_line(QByteArray * line){
     while (!archivo->atEnd()) {
             QByteArray line = archivo->readLine();
-            qDebug()<< "line -------------------"
-                       ""
-                       " "<<line;
-            //process_line(*line);
         }
+
 }
 void ventana::slot_solicitar()
 {

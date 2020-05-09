@@ -13,17 +13,20 @@ void ventana::CrearTablaUsuario()
 
     qDebug()<<"\n CREAR TABLA RECUPERADOS";
 
-    QByteArray consulta= "CREATE TABLE RECUPERADOS22 ("
+    QByteArray consulta= "CREATE TABLE RECUPERADOS ("
             " Province VARCHAR NULL ,"
             " Country VARCHAR NULL ,"
             " Lat VARCHAR NULL ,"
-            " Long VARCHAR NULL ";
+            " Lon VARCHAR NULL ";
     int mes = actual.month();
 
     for (int i=1; i<=mes ;i++) {
         QDate principo(2020,i,1);
 
         for (int j=1;j<=principo.daysInMonth();j++) {
+            if (i==1 and j<22) {
+                continue;
+            }
                QString fecha;
                int anio = 20;
                char d = 'd';
@@ -32,6 +35,7 @@ void ventana::CrearTablaUsuario()
                QString coma = ",";
                QString text = " VARCHAR NULL ";
                fecha = QString("%1 %2%3%4%5%6%7%8").arg(coma).arg(d).arg(j).arg(m).arg(i).arg(y).arg(anio).arg(text);
+              // qDebug()<<fecha;
                consulta.append(fecha);
         }
 
@@ -45,13 +49,10 @@ void ventana::CrearTablaUsuario()
     query.close();
     query.flush();
 
-    QSqlQuery insertar;
-    insertar.prepare(consulta);
-    if(insertar.exec()){
-        qDebug()<<"\n Insertado";
-    }
-    else {
-        qDebug()<<"\n NO Insertado "<<insertar.lastError();
+    QSqlQuery crear;
+    crear.prepare(consulta);
+    if(!crear.exec()){
+        qDebug()<<"\n NO Insertado "<<crear.lastError();
     }
 
 
