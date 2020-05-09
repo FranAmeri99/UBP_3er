@@ -268,7 +268,12 @@ DIST          = ../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/exceptions.prf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/yacc.prf \
 		../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/lex.prf \
-		../COVID-RECUPERADOS/COVID-RECUPERADOS.pro ../COVID-RECUPERADOS/ventana.h ../COVID-RECUPERADOS/main.cpp \
+		../COVID-RECUPERADOS/COVID-RECUPERADOS.pro ../COVID-RECUPERADOS/CrearTable.h \
+		../COVID-RECUPERADOS/cb_pais.h \
+		../COVID-RECUPERADOS/creat_table.h \
+		../COVID-RECUPERADOS/insertar.h \
+		../COVID-RECUPERADOS/mostrar.h \
+		../COVID-RECUPERADOS/ventana.h ../COVID-RECUPERADOS/main.cpp \
 		../COVID-RECUPERADOS/ventana.cpp
 QMAKE_TARGET  = COVID-RECUPERADOS
 DESTDIR       = 
@@ -721,7 +726,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../COVID-RECUPERADOS/ventana.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../COVID-RECUPERADOS/CrearTable.h ../COVID-RECUPERADOS/cb_pais.h ../COVID-RECUPERADOS/creat_table.h ../COVID-RECUPERADOS/insertar.h ../COVID-RECUPERADOS/mostrar.h ../COVID-RECUPERADOS/ventana.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../COVID-RECUPERADOS/main.cpp ../COVID-RECUPERADOS/ventana.cpp $(DISTDIR)/
 
 
@@ -1347,6 +1352,10 @@ ventana.o: ../COVID-RECUPERADOS/ventana.cpp ../COVID-RECUPERADOS/ventana.h \
 		../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qnetworkreply.h \
 		../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QIODevice \
 		../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile \
+		../COVID-RECUPERADOS/cb_pais.h \
+		../COVID-RECUPERADOS/creat_table.h \
+		../COVID-RECUPERADOS/mostrar.h \
+		../COVID-RECUPERADOS/insertar.h \
 		../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDateTime \
 		../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDir \
 		../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qdir.h \
