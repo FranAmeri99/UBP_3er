@@ -13,6 +13,13 @@
 #include <QTableWidget>
 #include <QComboBox>
 #include <QDateEdit>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QString>
+#include <QFile>
+
 
 class ventana : public QWidget
 {
@@ -24,6 +31,7 @@ public:
     void MostrarDatos();
     void Describe();
     void cargar_cb();
+
 private:
     QGroupBox *box;
     QGridLayout *layout;
@@ -32,16 +40,23 @@ private:
     QTableWidget *teSelect;
     QLayout * lSelect;
     QComboBox * cb_pais;
-    QComboBox * cb_estado;
     QDateEdit * de_dia;
 
     QSqlDatabase db;
+
+    QByteArray *texto;
+    QFile * archivo;
+    QNetworkAccessManager *manager;
+    QPushButton *botonPresionado;
+    QByteArray *line;
+//BORRAR
+    QFile * archivo2;
 public slots:
     void slot_Insertar();
-    void slot_Click_Pais();
-
-
-
+    void slot_respuesta(QNetworkReply *);
+    void slot_solicitar();
+    void process_line();
+    void process_line(QByteArray * line);
 
 signals:
 
