@@ -26,7 +26,7 @@ class ventana : public QWidget
     Q_OBJECT
 public:
     explicit ventana(QWidget *parent = nullptr);
-    void CrearTablaUsuario();
+    void CrearTablaPais();
     void InsertarPais();
     void MostrarDatos();
     void Describe();

@@ -9,7 +9,7 @@ void ventana::MostrarDatos(){
     QStringList headers = { "PAIS", "ESTADO", "LATITUD","longitud",auxS};
     teSelect->setHorizontalHeaderLabels(headers);
     de_dia->setDisplayFormat("M/d/yy");
-    QString dia = de_dia->text();
+    QDate dia = de_dia->date();
     qDebug()<<" \n dia seteado \n"<<dia;
     //CONSULTA
     QSqlQuery mostrar;
@@ -17,29 +17,40 @@ void ventana::MostrarDatos(){
     QSqlQuery descrinbe;
     descrinbe.prepare(desribe);
     QString consulta;
-    consulta.append("SELECT Country, Province, Lat, Long, [");
-
-
-    consulta.append(dia);
+    consulta.append("SELECT *"
+                    //" Country, Province, Lat, Long, "
+                    "");
+    QString fecha = "d";
+    QString di, me, an ;
+    di.setNum(dia.day());
+    me.setNum(dia.month());
+    an.setNum(dia.year()-2000);
+    fecha.append(di);
+    fecha.append("m");
+    fecha.append(me);
+    fecha.append("y");
+    fecha.append(an);
+    qDebug()<<fecha;
+    //consulta.append(fecha);
         //dia del combo box
     QString a = cb_pais->currentText();
     bool estado = a.contains(',');
     if(!estado){
-    consulta.append("] FROM recuperados WHERE Country = '");
+    consulta.append(" FROM recuperados WHERE Country = '");
     consulta.append(a);
      consulta.append("';");
 
     }
     else{
-        consulta.append("] FROM recuperados WHERE Province = '");
+        consulta.append(" FROM recuperados WHERE Province = '");
         int p = a.indexOf(',');
         QString pp = a.mid(p+2,-1);
         consulta.append(pp);
         // aux.append(aux2);
-        consulta.append("';");
+        consulta.append("'");
         }
     qDebug()<<"\n"<<consulta<<"\n";
-    mostrar.prepare(consulta);
+    mostrar.exec(consulta);
     qDebug()<<"\n";
     if(!mostrar.exec()){
         qDebug()<<"\n NO mostrado "<<mostrar.lastError();
@@ -66,11 +77,11 @@ void ventana::MostrarDatos(){
     teSelect->setItem(fila, 0,new QTableWidgetItem(mostrar.value(0).toByteArray().constData()));
     teSelect->setItem(fila, 2,new QTableWidgetItem(mostrar.value(2).toByteArray().constData()));
     teSelect->setItem(fila, 3,new QTableWidgetItem(mostrar.value(3).toByteArray().constData()));
-    teSelect->setItem(fila, 4,new QTableWidgetItem(mostrar.value(4).toByteArray().constData()));
+    teSelect->setItem(fila, 4,new QTableWidgetItem(mostrar.value(99).toByteArray().constData()));
     fila ++;
 
     }
-    QStringList headers2 = { "PAIS", "ESTADO", "LATITUD","longitud",dia};
+    QStringList headers2 = { "PAIS", "ESTADO", "LATITUD","longitud",dia.toString()};
     teSelect->setHorizontalHeaderLabels(headers2);
 }
 #endif // MOSTRAR_H

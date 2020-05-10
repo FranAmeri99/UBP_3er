@@ -51,6 +51,9 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
 
     connect(pbSelect,SIGNAL(pressed()),this,SLOT(slot_Insertar()));
 
+   // CrearTablaPais();
+   // InsertarPais();
+    cargar_cb();
 
 
 }
@@ -58,9 +61,7 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
 
 
 void ventana::slot_Insertar(){
-   CrearTablaUsuario();
-   InsertarPais();
-  cargar_cb();
+  // InsertarPais();
    // process_line();
    MostrarDatos();
 }
