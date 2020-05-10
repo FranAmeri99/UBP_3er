@@ -8,7 +8,7 @@ void ventana::cargar_cb()
     QSqlQuery cargar_pais;
 
     QString consulta;
-    consulta.append("SELECT Country, Province FROM recuperados");
+    consulta.append("SELECT Country, Province FROM RECUPERADOS");
 
     cargar_pais.prepare(consulta);
     if(!cargar_pais.exec()){

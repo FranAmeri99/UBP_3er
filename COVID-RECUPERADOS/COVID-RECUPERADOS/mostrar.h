@@ -6,10 +6,8 @@ void ventana::MostrarDatos(){
     QDate actual2;
     QDate aux = actual2.currentDate();
     QString auxS = aux.toString();
-    qDebug()<<"------------------"<<auxS<<"--------------";
     QStringList headers = { "PAIS", "ESTADO", "LATITUD","longitud",auxS};
     teSelect->setHorizontalHeaderLabels(headers);
-    qDebug()<<"\n joya 3";
     de_dia->setDisplayFormat("M/d/yy");
     QString dia = de_dia->text();
     qDebug()<<" \n dia seteado \n"<<dia;

@@ -31,7 +31,7 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
     manager = new QNetworkAccessManager;
     texto = new QByteArray;
     archivo = new QFile;
-    archivo->setFileName("../db/documento2.txt");
+    archivo->setFileName("../db/documento.csv");
     archivo->open(QIODevice::ReadWrite);
 
 
@@ -51,7 +51,7 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
 
     connect(pbSelect,SIGNAL(pressed()),this,SLOT(slot_Insertar()));
 
-    cargar_cb();
+
 
 }
 
@@ -59,8 +59,9 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
 
 void ventana::slot_Insertar(){
    CrearTablaUsuario();
-   InsertarUsuario();
-   process_line();
+   InsertarPais();
+  cargar_cb();
+   // process_line();
    MostrarDatos();
 }
 
@@ -68,6 +69,7 @@ void ventana::slot_respuesta(QNetworkReply *reply)
 {
     *texto = reply->readAll();
     archivo->write(*texto);
+
 }
 
 void ventana:: process_line(){
