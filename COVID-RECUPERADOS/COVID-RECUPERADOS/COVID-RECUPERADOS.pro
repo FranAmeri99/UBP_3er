@@ -1,4 +1,4 @@
-QT += network widgets sql
+QT += network widgets sql  core
 
 
 SOURCES += \
@@ -9,6 +9,7 @@ HEADERS += \
     CrearTable.h \
     cb_pais.h \
     creat_table.h \
+    drop_table.h \
     insertar.h \
     mostrar.h \
     ventana.h

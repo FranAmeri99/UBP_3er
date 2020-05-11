@@ -2,6 +2,7 @@
 #define INSERTAR_H
 #include "ventana.h"
 #include<QTextStream>
+#include <QChar>
 void ventana::InsertarPais()
 {
     qDebug()<<"\n Insertar";
@@ -59,6 +60,14 @@ void ventana::InsertarPais()
                 j++;
             }
         }
+
+        int ss = arreglo[0];
+
+        QString st3 = QString(agregar);
+        QString std4 = std.mid(ss+2,2);
+
+        qDebug()<<"----------"<<std4<<"----------";
+
         for (int i = agregar-2;i>=0;i--) {
 
             std2.insert(arreglo[i]+1,"'");

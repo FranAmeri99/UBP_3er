@@ -6,21 +6,19 @@ void ventana::MostrarDatos(){
     QDate actual2;
     QDate aux = actual2.currentDate();
     QString auxS = aux.toString();
-    QStringList headers = { "PAIS", "ESTADO", "LATITUD","longitud",auxS};
+    QStringList headers = { "PAIS", "ESTADO", "LATITUD","longitud",auxS}; //EN LA QUINTA COLUMNA SE MUESTRA LA FECHA ACTUAL
     teSelect->setHorizontalHeaderLabels(headers);
-    de_dia->setDisplayFormat("M/d/yy");
-    QDate dia = de_dia->date();
-    qDebug()<<" \n dia seteado \n"<<dia;
+
     //CONSULTA
+    QDate dia = de_dia->date();
     QSqlQuery mostrar;
-    QString  desribe= ".schema";
-    QSqlQuery descrinbe;
-    descrinbe.prepare(desribe);
     QString consulta;
-    consulta.append("SELECT *"
-                    //" Country, Province, Lat, Long, "
+    consulta.append("SELECT"
+                    " Country, Province, Lat, Lon, "
                     "");
     QString fecha = "d";
+
+    //PROCESO LA FECHA DEL COMBO BOX PARA ADECUARLA A MI CONSULTA
     QString di, me, an ;
     di.setNum(dia.day());
     me.setNum(dia.month());
@@ -30,55 +28,38 @@ void ventana::MostrarDatos(){
     fecha.append(me);
     fecha.append("y");
     fecha.append(an);
-    qDebug()<<fecha;
-    //consulta.append(fecha);
-        //dia del combo box
+    consulta.append(fecha);
+
+    //AGREGO EL PAIS/ESTADO,PAISE
     QString a = cb_pais->currentText();
     bool estado = a.contains(',');
-    if(!estado){
-    consulta.append(" FROM recuperados WHERE Country = '");
-    consulta.append(a);
-     consulta.append("';");
-
+    if(!estado){ //HAGO UNA COMPARACION PARA SABER SI TENGO QUE BUSCAR SOLO UN PAIS O UN ESTADO
+        consulta.append(" FROM recuperados WHERE Country = '");
+        consulta.append(a);
+        consulta.append("';");
     }
     else{
         consulta.append(" FROM recuperados WHERE Province = '");
         int p = a.indexOf(',');
         QString pp = a.mid(p+2,-1);
         consulta.append(pp);
-        // aux.append(aux2);
         consulta.append("'");
         }
-    qDebug()<<"\n"<<consulta<<"\n";
     mostrar.exec(consulta);
     qDebug()<<"\n";
     if(!mostrar.exec()){
         qDebug()<<"\n NO mostrado "<<mostrar.lastError();
-
     }
-
     int fila =0;
     teSelect->setRowCount(0);
-    while(mostrar.next()){
-
-
-    QDate inicio(2020, 1, 22);
-    QDate actual2;/*
-    QDate aux = actual2.currentDate();
-    int a = inicio.daysTo(aux);*/
-    //int a = inicio.daysTo();
-    //a +=3;
-    //como muestro las primeas cuatro columnas en orden correspondiente a la tabla
-    //la quinta columna trae los datps de la ultima columna de la tabla
-    //que es una diferencia entre la fecha de la fecha actual menos la de inicio mas 4 (columnas estado, pais, lat, long
-    teSelect->insertRow(fila);
-
-    teSelect->setItem(fila, 1,new QTableWidgetItem(mostrar.value(1).toByteArray().constData()));
-    teSelect->setItem(fila, 0,new QTableWidgetItem(mostrar.value(0).toByteArray().constData()));
-    teSelect->setItem(fila, 2,new QTableWidgetItem(mostrar.value(2).toByteArray().constData()));
-    teSelect->setItem(fila, 3,new QTableWidgetItem(mostrar.value(3).toByteArray().constData()));
-    teSelect->setItem(fila, 4,new QTableWidgetItem(mostrar.value(99).toByteArray().constData()));
-    fila ++;
+    while(mostrar.next()){ //muestro en la tabla lo que devuelve la consulta
+        teSelect->insertRow(fila);
+        teSelect->setItem(fila, 1,new QTableWidgetItem(mostrar.value(1).toByteArray().constData()));
+        teSelect->setItem(fila, 0,new QTableWidgetItem(mostrar.value(0).toByteArray().constData()));
+        teSelect->setItem(fila, 2,new QTableWidgetItem(mostrar.value(2).toByteArray().constData()));
+        teSelect->setItem(fila, 3,new QTableWidgetItem(mostrar.value(3).toByteArray().constData()));
+        teSelect->setItem(fila, 4,new QTableWidgetItem(mostrar.value(4).toByteArray().constData()));
+        fila ++;
 
     }
     QStringList headers2 = { "PAIS", "ESTADO", "LATITUD","longitud",dia.toString()};

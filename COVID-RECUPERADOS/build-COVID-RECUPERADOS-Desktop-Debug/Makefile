@@ -271,6 +271,7 @@ DIST          = ../../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.prf
 		../COVID-RECUPERADOS/COVID-RECUPERADOS.pro CrearTable.h \
 		../COVID-RECUPERADOS/cb_pais.h \
 		../COVID-RECUPERADOS/creat_table.h \
+		../COVID-RECUPERADOS/drop_table.h \
 		../COVID-RECUPERADOS/insertar.h \
 		../COVID-RECUPERADOS/mostrar.h \
 		../COVID-RECUPERADOS/ventana.h ../COVID-RECUPERADOS/main.cpp \
@@ -726,7 +727,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents CrearTable.h ../COVID-RECUPERADOS/cb_pais.h ../COVID-RECUPERADOS/creat_table.h ../COVID-RECUPERADOS/insertar.h ../COVID-RECUPERADOS/mostrar.h ../COVID-RECUPERADOS/ventana.h $(DISTDIR)/
+	$(COPY_FILE) --parents CrearTable.h ../COVID-RECUPERADOS/cb_pais.h ../COVID-RECUPERADOS/creat_table.h ../COVID-RECUPERADOS/drop_table.h ../COVID-RECUPERADOS/insertar.h ../COVID-RECUPERADOS/mostrar.h ../COVID-RECUPERADOS/ventana.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../COVID-RECUPERADOS/main.cpp ../COVID-RECUPERADOS/ventana.cpp $(DISTDIR)/
 
 
@@ -1357,7 +1358,9 @@ ventana.o: ../COVID-RECUPERADOS/ventana.cpp ../COVID-RECUPERADOS/ventana.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDateTime \
 		../COVID-RECUPERADOS/insertar.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QTextStream \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QChar \
 		../COVID-RECUPERADOS/mostrar.h \
+		../COVID-RECUPERADOS/drop_table.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDir \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qdir.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qfileinfo.h

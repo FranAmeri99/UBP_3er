@@ -26,16 +26,26 @@ class ventana : public QWidget
     Q_OBJECT
 public:
     explicit ventana(QWidget *parent = nullptr);
+
+    void BorraTable();
     void CrearTablaPais();
     void InsertarPais();
+    void cargar_cb();
     void MostrarDatos();
     void Describe();
-    void cargar_cb();
+
 
 private:
     QGroupBox *box;
     QGridLayout *layout;
     QPushButton *pbSelect;
+
+    QPushButton *pbBorrar;
+    QPushButton *pbCrear;
+    QPushButton *pbInsertar;
+    QPushButton *pbCargar;
+
+
     QPushButton *pbSalir;
     QTableWidget *teSelect;
     QLayout * lSelect;
@@ -52,6 +62,10 @@ private:
 //BORRAR
     QFile * archivo2;
 public slots:
+    void slot_Borrar();
+    void slot_Crear();
+    void slot_CargarCB();
+    void slot_Mostrar();
     void slot_Insertar();
     void slot_respuesta(QNetworkReply *);
     void slot_solicitar();
