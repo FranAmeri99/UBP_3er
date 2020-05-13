@@ -40,8 +40,8 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
     archivo->open(QIODevice::ReadWrite);
 
     manager = new QNetworkAccessManager;
-    slot_solicitar();
-    connect(manager,SIGNAL(finished(QNetworkReply *)),this,SLOT(slot_respuesta(QNetworkReply *)));
+   // slot_solicitar();
+  //  connect(manager,SIGNAL(finished(QNetworkReply *)),this,SLOT(slot_respuesta(QNetworkReply *)));
 
     QDate actual5(2020,4,29); //seteo un dia para agilisar el tesst
     de_dia->setDate(actual5);

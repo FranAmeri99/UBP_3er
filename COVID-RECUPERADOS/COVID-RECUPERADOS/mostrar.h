@@ -32,19 +32,13 @@ void ventana::MostrarDatos(){
 
     //AGREGO EL PAIS/ESTADO,PAISE
     QString a = cb_pais->currentText();
-    bool estado = a.contains(',');
-    if(!estado){ //HAGO UNA COMPARACION PARA SABER SI TENGO QUE BUSCAR SOLO UN PAIS O UN ESTADO
-        consulta.append(" FROM recuperados WHERE Country = '");
-        consulta.append(a);
-        consulta.append("';");
-    }
-    else{
+
         consulta.append(" FROM recuperados WHERE Province = '");
         int p = a.indexOf(',');
         QString pp = a.mid(p+2,-1);
         consulta.append(pp);
         consulta.append("'");
-        }
+
     mostrar.exec(consulta);
     qDebug()<<"\n";
     if(!mostrar.exec()){

@@ -49,8 +49,16 @@ void ventana::InsertarPais()
     qDebug()<<"\n Insertar5";
     QByteArray line = archivo->readLine();
     if(!line.startsWith("Province")){
+        if(line.startsWith(",")){
+            QString std5= QString(line);
+            std5.remove(0,1);
+            QString paiss = std5.mid(0,std5.indexOf(','));
+            line.insert(0,paiss);
+        }
         QString std = QString(line);
-        QString std2 = std.mid(1,(std.size()-2));
+        QString std2 = std.mid(0,(std.size()-2));
+        qDebug()<<std2;
+
         int agregar = std2.count(',')+1;
         int arreglo[agregar];
         int j = 0;
@@ -83,14 +91,14 @@ void ventana::InsertarPais()
         consulta2.append(std2);
         consulta2.append(")");
         query2.write(consulta2);
-        qDebug()<<consulta2;
+        qDebug()<<"--"<<consulta2<<"--";
 
         QSqlQuery insertar;
         insertar.exec(consulta2);
         if(insertar.exec(consulta2)){
             qDebug()<<"\n Insertado ";
         }else{
-            qDebug()<<"\n Insertado fail"<<insertar.lastError();
+           // qDebug()<<"\n Insertado fail"<<insertar.lastError();
         }
 
 
