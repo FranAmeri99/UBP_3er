@@ -15,14 +15,10 @@ void ventana::cargar_cb()
     while(cargar_pais.next()){
     QString a = cargar_pais.value(0).toByteArray().constData();
     QString b = "";
-    // veo si tiene provincias o solo esta el pais
-    if(cargar_pais.value(1).toByteArray().constData()== b){
-        cb_pais->addItem(a);
-    }else{
-        b = cargar_pais.value(1).toByteArray().constData();
+    b = cargar_pais.value(1).toByteArray().constData();
         QString c = a +" , "+ b;
         cb_pais->addItem(c);
-        }
+
     }
 }
 
