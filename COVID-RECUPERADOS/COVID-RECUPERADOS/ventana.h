@@ -21,11 +21,11 @@
 #include <QFile>
 
 
-class ventana : public QWidget
+class Ventana : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ventana(QWidget *parent = nullptr);
+    explicit Ventana(QWidget *parent = nullptr);
 
     void BorraTable();
     void CrearTablaPais();
@@ -36,7 +36,6 @@ public:
 
 
 private:
-    QGroupBox *box;
     QGridLayout *layout;
     QPushButton *pbSelect;
 
@@ -54,7 +53,6 @@ private:
 
     QSqlDatabase db;
 
-    QByteArray *texto;
     QFile * archivo;
     QNetworkAccessManager *manager;
     QPushButton *botonPresionado;
@@ -68,7 +66,6 @@ public slots:
     void slot_Mostrar();
     void slot_Insertar();
     void slot_respuesta(QNetworkReply *);
-    void slot_solicitar();
     void process_line();
     void process_line(QByteArray * line);
 

@@ -1,7 +1,7 @@
 #ifndef MOSTRAR_H
 #define MOSTRAR_H
 #include"ventana.h"
-void ventana::MostrarDatos(){
+void Ventana::MostrarDatos(){
     //BARRA SUPERIOR
     QDate actual2;
     QDate aux = actual2.currentDate();

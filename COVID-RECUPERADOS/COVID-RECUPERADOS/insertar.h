@@ -3,9 +3,13 @@
 #include "ventana.h"
 #include<QTextStream>
 #include <QChar>
-void ventana::InsertarPais()
+void Ventana::InsertarPais()
 {
     qDebug()<<"\n Insertar";
+
+    QFile query2;
+    query2.setFileName("../db/insert.txt");
+    query2.open(QIODevice::WriteOnly|QIODevice::Text);
 
     QDate inicio(2020,1,22);//fecha desde que se empezo a registrar casos
     QDate actual2;
@@ -41,14 +45,15 @@ void ventana::InsertarPais()
         }
     }
 
-    QFile query2;
-    query2.setFileName("../db/insert.txt");
-    query2.open(QIODevice::WriteOnly|QIODevice::Text);
 
-    while (!archivo->atEnd()) {
-    QByteArray line = archivo->readLine();
-    //como la primera linea del csv contiene los nombres de las columas la omito en la insercion
-    if(!line.startsWith("Province")){
+
+    while ( ! archivo->atEnd() )  {
+
+        qDebug()<<"-------------------------------------------------------------------numero";
+
+        QByteArray line = archivo->readLine();
+        //como la primera linea del csv contiene los nombres de las columas la omito en la insercion
+        if(!line.startsWith("Province")){
         //si empieza con una coma significa que no tiene una provincia asociada
         //debemos completar ese dato faltante (para que no tire error en la insercion)
         //lo completo con el mismo nombre que el pais
@@ -93,6 +98,8 @@ void ventana::InsertarPais()
             }
         }
     }
+    query2.close();
+    query2.flush();
 }
 
 #endif // INSERTAR_H

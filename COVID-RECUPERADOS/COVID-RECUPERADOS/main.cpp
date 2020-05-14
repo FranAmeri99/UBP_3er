@@ -1,12 +1,13 @@
+#include <QApplication>
 #include "ventana.h"
 
-#include <QApplication>
-int main(int argc, char *argv[])
-{
-    QApplication app (argc, argv);
-    QWidget qwvent;
-    ventana * vent = new ventana(&qwvent);
-      //  vent->resize(800,600);
+int main( int argc, char ** argv )  {
+    QApplication app ( argc, argv );
+
+    Ventana * ventana = new Ventana;
+    ventana->resize( 800, 600 );
+    ventana->show();
+
     return app.exec();
 }
 

@@ -1,7 +1,7 @@
 #ifndef CB_PAIS_H
 #define CB_PAIS_H
 #include "ventana.h"
-void ventana::cargar_cb()
+void Ventana::cargar_cb()
 {
     cb_pais->clear();
     //cargo en el ComboBox los paices y provincias que puedo buscar

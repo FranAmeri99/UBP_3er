@@ -9,8 +9,8 @@
 #include <QSqlError>
 #include <QDir>
 using namespace std;
-ventana::ventana(QWidget *parent) : QWidget(parent)
-{   box = new QGroupBox;
+Ventana::Ventana(QWidget *parent) : QWidget(parent)  {
+
     layout = new QGridLayout;
     pbSelect = new QPushButton("BUSCAR");
     pbSalir = new QPushButton("Salir");
@@ -31,17 +31,26 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
     layout->addWidget(cb_pais,4,5);
     layout->addWidget(de_dia,5,5);
     layout->addWidget(pbSelect,6,5);
-    box->setLayout(layout);
-    box->show();
 
-    texto = new QByteArray;
+    //pbInsertar->setEnabled( false );
+
+    this->setLayout(layout);
+
     archivo = new QFile;
     archivo->setFileName("../db/documento.csv");
     archivo->open(QIODevice::ReadWrite);
-
+/*
     manager = new QNetworkAccessManager;
-    slot_solicitar();
-    connect(manager,SIGNAL(finished(QNetworkReply *)),this,SLOT(slot_respuesta(QNetworkReply *)));
+
+    connect( manager, SIGNAL( finished(QNetworkReply *)),this,SLOT(slot_respuesta(QNetworkReply *)));
+
+    QString ur = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/"
+                 "csse_covid_19_time_series/time_series_covid19_recovered_global.csv";
+
+    QUrl url( ur );
+    manager->get( QNetworkRequest( url ) );*/
+
+
 
     QDate actual5(2020,4,29); //seteo un dia para agilisar el tesst
     de_dia->setDate(actual5);
@@ -60,43 +69,39 @@ ventana::ventana(QWidget *parent) : QWidget(parent)
 
 }
 
-void ventana::slot_Borrar(){
+void Ventana::slot_Borrar(){
     BorraTable();
 }
-void ventana::slot_Crear(){
+void Ventana::slot_Crear(){
     CrearTablaPais();
 }
-void ventana::slot_Insertar(){
+void Ventana::slot_Insertar(){
     InsertarPais();
 }
 
-void ventana::slot_CargarCB(){
+void Ventana::slot_CargarCB(){
     cargar_cb();
 }
-void ventana::slot_Mostrar(){
+void Ventana::slot_Mostrar(){
     MostrarDatos();
 }
-void ventana::slot_respuesta(QNetworkReply *reply)
+void Ventana::slot_respuesta(QNetworkReply *reply)
 {    //ESCRIBO EN UN ARCHIVO LOS TRAIDOS
-    *texto = reply->readAll();
-    archivo->write(*texto);
+
+    QByteArray ba = reply->readAll();
+    archivo->write( ba );
+
+    pbInsertar->setEnabled( true );
 }
 
-void ventana:: process_line(){
+void Ventana:: process_line(){
     process_line(line);
 }
 
-void ventana:: process_line(QByteArray * line){
+void Ventana:: process_line(QByteArray * line){
 
     while (!archivo->atEnd()) {
             QByteArray line = archivo->readLine();
         }
 
-}
-void ventana::slot_solicitar()
-{   //TRAIGO EL CONTENDIO LA PAGINA DONDE SE ENCUENTRAN LOS DATOS QUE VOY A PROCESAR
-    QString ur = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv";
-    QUrl url(ur);
-    manager->get(QNetworkRequest(url));
-    botonPresionado = (QPushButton*) this->sender();
 }

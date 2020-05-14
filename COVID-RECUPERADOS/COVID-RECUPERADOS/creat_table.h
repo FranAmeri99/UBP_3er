@@ -4,7 +4,8 @@
 #include "ventana.h"
 #include <QDateTime>
 #include "insertar.h"
-void ventana::CrearTablaPais()
+
+void Ventana::CrearTablaPais()
 {
     QDate inicio(2020,1,22); //fecha donde se empiezan a registrar los casos recuperados
     QDate actual2;
