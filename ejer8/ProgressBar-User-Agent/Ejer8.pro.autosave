@@ -1,0 +1,10 @@
+QT +=  network gui core widgets sql
+
+HEADERS += \
+    admindb.h \
+    ventana.h
+
+SOURCES += \
+    admindb.cpp \
+    main.cpp \
+    ventana.cpp

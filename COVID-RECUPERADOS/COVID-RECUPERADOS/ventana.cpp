@@ -39,7 +39,7 @@ Ventana::Ventana(QWidget *parent) : QWidget(parent)  {
     archivo = new QFile;
     archivo->setFileName("../db/documento.csv");
     archivo->open(QIODevice::ReadWrite);
-/*
+
     manager = new QNetworkAccessManager;
 
     connect( manager, SIGNAL( finished(QNetworkReply *)),this,SLOT(slot_respuesta(QNetworkReply *)));
@@ -48,7 +48,7 @@ Ventana::Ventana(QWidget *parent) : QWidget(parent)  {
                  "csse_covid_19_time_series/time_series_covid19_recovered_global.csv";
 
     QUrl url( ur );
-    manager->get( QNetworkRequest( url ) );*/
+    manager->get( QNetworkRequest( url ) );
 
 
 
