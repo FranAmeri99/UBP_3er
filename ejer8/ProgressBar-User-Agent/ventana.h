@@ -1,6 +1,6 @@
 #ifndef VENTANA_H
 #define VENTANA_H
-
+#include <admindb.h>
 #include <QWidget>
 #include <QLineEdit>
 #include <QLayout>
@@ -13,6 +13,9 @@
 #include <QNetworkReply>
 #include <QUrl>
 #include <QFile>
+#include "grafico.h"
+#include "formulario.h"
+
 
 class Ventana : public QWidget {
     Q_OBJECT
@@ -30,6 +33,9 @@ private:
     QTextEdit * text_edit;
     QProgressBar * progressBar;
     QFile * ProvinciaCSV ;
+   // grafico  * graficoo;
+    Formulario * graficoo;
+
 private slots:
     void slot_respuesta(QNetworkReply * reply);
     void slot_descargando( qint64 bytesRecibidos, qint64 bytesTotales );

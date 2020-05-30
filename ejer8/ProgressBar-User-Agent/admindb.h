@@ -6,15 +6,37 @@
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlError>
 
-class adminDB : public QWidget
+#include <QString>
+#include <QStringList>
+#include <QVector>
+#include <QObject>
+#include <QMessageBox>
+#include <QFile>
+
+class AdminDB : public QObject
 {
     Q_OBJECT
 public:
-    explicit adminDB(QWidget *parent = nullptr);
+    explicit AdminDB(QObject *parent = nullptr);
     void CreatTable(QString nombreTable);
-    void InsertarTable(QString nombreTable);
-    void MostrarTable(QString nombreTable);
     QSqlDatabase db;
+
+    bool conectar( QString archivoSqlite );
+    QSqlDatabase getDB();
+
+    QVector< QStringList > select( QString comando );
+
+    QStringList campos( QString tabla );
+
+    void creats();
+
+    void insertar( QString nombreTabla );
+
+    void mostrar( QString nombreTabla , QString provincia );
+
+    QFile * ProvinciaCSV ;
+
+
 
 signals:
 

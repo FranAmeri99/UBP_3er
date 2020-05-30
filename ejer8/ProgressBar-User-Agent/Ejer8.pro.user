@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.11.1, 2020-05-24T13:03:58. -->
+<!-- Written by QtCreator 4.11.1, 2020-05-29T10:55:38. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -285,8 +285,9 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/francisco/Documentos/ProgressBar-User-Agent/Ejer8.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/francisco/Documentos/ProgressBar-User-Agent/Ejer8.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Ejer82</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/francisco/Escritorio/UBP_3er/ejer8/ProgressBar-User-Agent/Ejer8.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/francisco/Escritorio/UBP_3er/ejer8/ProgressBar-User-Agent/Ejer8.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
