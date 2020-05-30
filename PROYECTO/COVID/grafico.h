@@ -29,7 +29,10 @@ private:
 
     AdminDB * db;
 
-    QLineSeries * series;
+    QLineSeries * infectados;
+    QLineSeries * muertos;
+    QLineSeries * infectadosD;
+    QLineSeries * muertosD;
     QChart * chart;
     QFont font;
     QCategoryAxis * axisX;

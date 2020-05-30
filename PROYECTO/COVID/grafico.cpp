@@ -7,7 +7,10 @@ Grafico::Grafico(AdminDB* OadminDB, QString * provincia , QWidget *parent) : QMa
 {
 
     const int tamano = 100;
-    series = new QLineSeries();
+    infectados = new QLineSeries();
+    infectadosD = new QLineSeries();
+    muertos = new QLineSeries();
+    muertosD = new QLineSeries();
     if (!OadminDB){
         db  = new AdminDB();
         db->conectar("../db/usuarios.sqlite");
@@ -31,11 +34,17 @@ Grafico::Grafico(AdminDB* OadminDB, QString * provincia , QWidget *parent) : QMa
     int contador_de_registros = 0;
     int i = 0 ;
     while( query.next() )  {
-        int casos = query.value("casos_totales").toInt();
+        int casosT = query.value("casos_totales").toInt();
+        int casosD = query.value("casos_nuevos").toInt();
+        int muertosT = query.value("muertes_total").toInt();
+        int muertosDia = query.value("muertes_nuevos").toInt();
         QString Numero_Dia;
         Numero_Dia.setNum(i);
 
-        series->append(i, casos);
+        infectados->append(i, casosT);
+        infectadosD->append(i, casosD);
+        muertos->append(i, muertosT);
+        muertosD->append(i, muertosDia);
 
         axisX->append(Numero_Dia,i);
 
@@ -43,9 +52,14 @@ Grafico::Grafico(AdminDB* OadminDB, QString * provincia , QWidget *parent) : QMa
     }
 
 
+
+
     chart = new QChart();
     chart->legend()->hide();
-    chart->addSeries(series);
+    chart->addSeries(infectados);
+    chart->addSeries(infectadosD);
+    chart->addSeries(muertos);
+    chart->addSeries(muertosD);
     chart->createDefaultAxes();
 
     font.setPixelSize(18);
@@ -53,13 +67,27 @@ Grafico::Grafico(AdminDB* OadminDB, QString * provincia , QWidget *parent) : QMa
     chart->setTitleBrush(QBrush(Qt::black));
     chart->setTitle(*provincia);
 
-    QPen pen(QRgb(0x000000));
-    pen.setWidth(5);
-    series->setPen(pen);
+    QPen penC;
+    penC.setColor("black");
+    penC.setWidth(1);
+    infectados->setPen(penC);
+    QPen penCD;
+    penCD.setColor("green");
+    penCD.setWidth(1);
+    infectadosD->setPen(penCD);
+    QPen penM;
+    penM.setColor("red");
+    penM.setWidth(1);
+    muertos->setPen(penM);
+    QPen penMD;
+    penMD.setColor("blue");
+    penMD.setWidth(1);
+    muertosD->setPen(penMD);
 
     chart->setAnimationOptions(QChart::AllAnimations);
 
     chartView = new QChartView(chart);
+
     chartView->setRenderHint(QPainter::Antialiasing);
 
     this->setCentralWidget(chartView);
