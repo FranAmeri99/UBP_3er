@@ -76,7 +76,10 @@ void Formulario::mostrar(QString provincia , QString fecha )
             teSelect->setItem(i,j,new QTableWidgetItem(cons.at(i).at(j)));
         }
     }
-    graficador = new Grafico (db, cbprov->currentText());
+    QString * nuevo_ptr = new QString(cbprov->currentText());
+    graficador = new Grafico (db, nuevo_ptr);
+    graficador->show();
+    graficador->resize(600,600);
 
 }
 
