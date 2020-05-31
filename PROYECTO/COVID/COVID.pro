@@ -13,3 +13,4 @@ HEADERS += \
     grafico.h \
     inicio.h
 
+RC_ICONS = myappico.ico

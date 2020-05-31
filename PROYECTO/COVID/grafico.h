@@ -13,7 +13,7 @@
 #include <QtCharts/QCategoryAxis>
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QPieSlice>
-
+#include <QCheckBox>
 #include "admindb.h"
 
 QT_CHARTS_USE_NAMESPACE
@@ -23,16 +23,18 @@ class Grafico : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit Grafico( AdminDB* OadminDB = nullptr, QString * provincia = nullptr , QWidget *parent = nullptr );
 
+    explicit Grafico( AdminDB* OadminDB = nullptr , QString * provincia = nullptr , QWidget *parent = nullptr );
+/*
+    explicit Grafico(  QCheckBox * ptr_cbIT = nullptr,QCheckBox * ptr_cbID = nullptr, QCheckBox * ptr_cbMT = nullptr, QCheckBox * ptr_cbMD = nullptr, AdminDB* OadminDB = nullptr , QString * provincia = nullptr , QWidget *parent = nullptr );
+*/
 private:
-
-    AdminDB * db;
 
     QLineSeries * infectados;
     QLineSeries * muertos;
     QLineSeries * infectadosD;
     QLineSeries * muertosD;
+    AdminDB * db;
     QChart * chart;
     QFont font;
     QCategoryAxis * axisX;

@@ -1132,6 +1132,8 @@ moc_formulario.cpp: ../COVID/formulario.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieseries.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QPieSlice \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		moc_predefs.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/bin/moc
 	/home/francisco/Qt5.14.2/5.14.2/gcc_64/bin/moc $(DEFINES) --include /home/francisco/Escritorio/UBP_3er/PROYECTO/build-COVID-Desktop-Debug/moc_predefs.h -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++ -I/home/francisco/Escritorio/UBP_3er/PROYECTO/COVID -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtCharts -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtGui -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtNetwork -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtSql -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../COVID/formulario.h -o moc_formulario.cpp
@@ -1306,6 +1308,26 @@ moc_grafico.cpp: ../COVID/grafico.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieseries.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QPieSlice \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../COVID/admindb.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlDatabase \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqldatabase.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qtsqlglobal.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qtsql-config.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QString \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVector \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlError \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqlerror.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlRecord \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqlrecord.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlQuery \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqlquery.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
 		moc_predefs.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/bin/moc
 	/home/francisco/Qt5.14.2/5.14.2/gcc_64/bin/moc $(DEFINES) --include /home/francisco/Escritorio/UBP_3er/PROYECTO/build-COVID-Desktop-Debug/moc_predefs.h -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++ -I/home/francisco/Escritorio/UBP_3er/PROYECTO/COVID -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtCharts -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtGui -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtNetwork -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtSql -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../COVID/grafico.h -o moc_grafico.cpp
@@ -1542,6 +1564,8 @@ moc_inicio.cpp: ../COVID/inicio.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieseries.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QPieSlice \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1818,6 +1842,8 @@ admindb.o: ../COVID/admindb.cpp ../COVID/admindb.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieseries.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QPieSlice \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QCryptographicHash \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcryptographichash.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile
@@ -2053,7 +2079,9 @@ formulario.o: ../COVID/formulario.cpp ../COVID/formulario.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QPieSeries \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieseries.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QPieSlice \
-		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o formulario.o ../COVID/formulario.cpp
 
 grafico.o: ../COVID/grafico.cpp ../COVID/grafico.h \
@@ -2226,7 +2254,69 @@ grafico.o: ../COVID/grafico.cpp ../COVID/grafico.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieseries.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QPieSlice \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
-		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../COVID/admindb.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlDatabase \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqldatabase.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qtsqlglobal.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qtsql-config.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QString \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVector \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlError \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqlerror.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlRecord \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqlrecord.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlQuery \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqlquery.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
+		../COVID/formulario.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QWidget \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLineEdit \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLayout \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QProgressBar \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qprogressbar.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QComboBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcombobox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDateEdit \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdatetimeedit.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDateTime \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QTableWidget \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtablewidget.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtableview.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qitemselectionmodel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o grafico.o ../COVID/grafico.cpp
 
 main.o: ../COVID/main.cpp ../COVID/inicio.h \
@@ -2461,6 +2551,8 @@ main.o: ../COVID/main.cpp ../COVID/inicio.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieseries.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QPieSlice \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -2720,6 +2812,8 @@ inicio.o: ../COVID/inicio.cpp ../COVID/inicio.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieseries.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QPieSlice \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \

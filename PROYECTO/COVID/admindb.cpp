@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QCryptographicHash>
 #include <QFile>
+
 AdminDB::AdminDB( QObject * parent ) : QObject( parent )  {
     db = QSqlDatabase::addDatabase( "QSQLITE" );
 }
@@ -95,7 +96,7 @@ void AdminDB::insertar()
     if (!ProvinciaCSV->isOpen()){
         qDebug()<<"No se pudo abrir";
     }
-    //CREO UN ARCHIVI TXT PARA PODER VISUALISAR MEJOR LAS CONSULTAS Y NO VERLAS
+    //CREO UN ARCHIVO TXT PARA PODER VISUALISAR MEJOR LAS CONSULTAS Y NO VERLAS
     // POR EL DEBUG
     QFile * Insertar = new QFile;
     Insertar->setFileName("../db/Insertar.txt");

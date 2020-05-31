@@ -54,6 +54,22 @@ Grafico::Grafico(AdminDB* OadminDB, QString * provincia , QWidget *parent) : QMa
 
 
 
+    /*
+
+    if ( ptr_cbIT->isChecked() ) {
+        chart->addSeries(infectados);
+    }
+    if ( ptr_cbIT->isChecked() ) {
+        chart->addSeries(infectadosD);
+    }
+    if ( ptr_cbIT->isChecked() ) {
+        chart->addSeries(muertos);
+    }
+    if ( ptr_cbIT->isChecked() ) {
+        chart->addSeries(muertosD);
+    }
+
+      */
     chart = new QChart();
     chart->legend()->hide();
     chart->addSeries(infectados);
@@ -69,19 +85,19 @@ Grafico::Grafico(AdminDB* OadminDB, QString * provincia , QWidget *parent) : QMa
 
     QPen penC;
     penC.setColor("black");
-    penC.setWidth(1);
+    penC.setWidth(5);
     infectados->setPen(penC);
     QPen penCD;
     penCD.setColor("green");
-    penCD.setWidth(1);
+    penCD.setWidth(5);
     infectadosD->setPen(penCD);
     QPen penM;
     penM.setColor("red");
-    penM.setWidth(1);
+    penM.setWidth(5);
     muertos->setPen(penM);
     QPen penMD;
     penMD.setColor("blue");
-    penMD.setWidth(1);
+    penMD.setWidth(5);
     muertosD->setPen(penMD);
 
     chart->setAnimationOptions(QChart::AllAnimations);
