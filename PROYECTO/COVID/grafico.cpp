@@ -93,11 +93,11 @@ Grafico::Grafico(AdminDB* OadminDB, QString * provincia , QWidget *parent) : QMa
     infectadosD->setPen(penCD);
     QPen penM;
     penM.setColor("red");
-    penM.setWidth(5);
+    penM.setWidth(2);
     muertos->setPen(penM);
     QPen penMD;
     penMD.setColor("blue");
-    penMD.setWidth(5);
+    penMD.setWidth(2);
     muertosD->setPen(penMD);
 
     chart->setAnimationOptions(QChart::AllAnimations);
