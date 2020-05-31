@@ -3,6 +3,7 @@
 #include <QDebug>
 #include "formulario.h"
 
+
 Grafico::Grafico(AdminDB* OadminDB, QString * provincia , QWidget *parent) : QMainWindow(parent)
 {
 

@@ -7,6 +7,7 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     inicio w;
+    w.setWindowIcon(QIcon("../db/icono.ico"));
     w.show();
 /*
     Grafico grafico;
