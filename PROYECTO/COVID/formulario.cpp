@@ -31,9 +31,9 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
     //conecto base de datos
     db = new AdminDB;
     db->conectar( "../db/COVID.sqlite" );
-    db->creats();
+   // db->creats();
     //COMO ya tengo los datos cargados dejo comentado la insercion
-    db->insertar();
+  //  db->insertar();
     cargarCB();
     connect( pbBuscar, SIGNAL( pressed() ) , this, SLOT( slot_mostra() ) );
 
@@ -74,6 +74,10 @@ void Formulario::cargarCB()
 
 void Formulario::mostrar(QString provincia , QString fecha )
 {
+    QStringList headers2 = { "FECHA", "PROVINCIA", "CASOS TOTALES","CASOS NUEVOS","MUERTOS TOTALES","MUERTOS NUEVOS" };
+
+    teSelect->setHorizontalHeaderLabels(headers2);
+
     //Genero Consulta
     QString consulta = "SELECT * FROM datos ";
     if (provincia != "todo"){

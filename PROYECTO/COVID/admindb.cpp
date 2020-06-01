@@ -70,6 +70,9 @@ QVector< QStringList > AdminDB::select( QString comando )  {
 
 void AdminDB::creats()
 {
+    QByteArray borrar = "DROP TABLE datos";
+    QSqlQuery query( db );
+    query.exec(borrar);
     qDebug()<<"Admin Create";
         QByteArray crear = "CREATE TABLE IF NOT EXISTS datos";
         crear.append(" (fecha VARCHAR, provincia VARCHAR, casos_totales VARCHAR,"

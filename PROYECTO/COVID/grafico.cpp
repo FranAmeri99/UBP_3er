@@ -67,7 +67,10 @@ Grafico::Grafico(AdminDB* OadminDB, QString * provincia , QWidget *parent) : QMa
         muertosD->append(i, muertosDia);
         dia.append(Numero_Dia);
         axisX->append(Numero_Dia,i);
-        maximo = casosT;
+        if(maximo < casosD){
+            maximo = casosD;
+
+        }
         i++;
     }
     axisY->setRange(0.0, maximo);
@@ -92,14 +95,15 @@ Grafico::Grafico(AdminDB* OadminDB, QString * provincia , QWidget *parent) : QMa
       */
 
     chart = new QChart();
-    chart->legend()->hide();
+    chart->legend();
+    //chart->legend()->hide();
 
-    chart->addSeries(infectados);
+//    chart->addSeries(infectados);
     chart->addSeries(infectadosD);
     chart->addSeries(muertos);
     chart->addSeries(muertosD);
-    axisY->setTickCount(20);
-    axisY->setLabelFormat("%.2f");
+    axisY->setTickCount(30);
+    axisY->setLabelFormat("%.0f");
 
     chart->createDefaultAxes();
 //    chart->setAxisX(axisX);
