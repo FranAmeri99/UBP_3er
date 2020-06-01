@@ -14,6 +14,7 @@
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QPieSlice>
 #include <QCheckBox>
+#include <QGridLayout>
 #include "admindb.h"
 
 QT_CHARTS_USE_NAMESPACE
@@ -40,6 +41,12 @@ private:
     QCategoryAxis * axisX;
     QChartView * chartView;
 
+    QGridLayout * layout;
+
+    QCheckBox * cbinfectadosT;
+    QCheckBox * cbinfectadosD;
+    QCheckBox * cbMuertosT;
+    QCheckBox * cbMuertosD;
 
 };
 

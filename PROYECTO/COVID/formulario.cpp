@@ -9,18 +9,19 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
     defecha = new QDateEdit;
     teSelect = new QTableWidget;
     pbBuscar->setText("Buscar");
-
+/*
     cbinfectadosT = new QCheckBox("Infectados Totales");
     cbinfectadosD= new QCheckBox("Infectados Dia");
     cbMuertosT= new QCheckBox("Muertos Totales");
     cbMuertosD= new QCheckBox("Muertos Dia");
-    layout->addWidget(cbprov,0,0,1,2);
-    layout->addWidget(defecha,0,2,1,1);
-    layout->addWidget(pbBuscar,0,3,1,1);
     layout->addWidget(cbinfectadosT,1,0,1,1);
     layout->addWidget(cbinfectadosD,1,1,1,1);
     layout->addWidget(cbMuertosT,1,2,1,1);
     layout->addWidget(cbMuertosD,1,3,1,1);
+*/
+    layout->addWidget(cbprov,0,0,1,2);
+    layout->addWidget(defecha,0,2,1,1);
+    layout->addWidget(pbBuscar,0,3,1,1);
     layout->addWidget(teSelect, 2,0,4,4);
     this->setLayout(layout);
     teSelect->setColumnCount(6);//adigno cantidad de columas
@@ -32,7 +33,7 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
     db->conectar( "../db/COVID.sqlite" );
     db->creats();
     //COMO ya tengo los datos cargados dejo comentado la insercion
-    //db->insertar();
+    db->insertar();
     cargarCB();
     connect( pbBuscar, SIGNAL( pressed() ) , this, SLOT( slot_mostra() ) );
 
