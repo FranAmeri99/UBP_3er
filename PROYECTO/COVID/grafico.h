@@ -25,7 +25,7 @@ class Grafico : public QMainWindow
     Q_OBJECT
 public:
 
-    explicit Grafico( AdminDB* OadminDB = nullptr , QString * provincia = nullptr , QWidget *parent = nullptr );
+    explicit Grafico( AdminDB* OadminDB = nullptr , QString * provincia = nullptr , QString * provincia2 = nullptr , QWidget *parent = nullptr );
 /*
     explicit Grafico(  QCheckBox * ptr_cbIT = nullptr,QCheckBox * ptr_cbID = nullptr, QCheckBox * ptr_cbMT = nullptr, QCheckBox * ptr_cbMD = nullptr, AdminDB* OadminDB = nullptr , QString * provincia = nullptr , QWidget *parent = nullptr );
 */
@@ -41,7 +41,11 @@ private:
     QCategoryAxis * axisX;
     QChartView * chartView;
 
-    QGridLayout * layout;
+
+    QLineSeries * infectados2;
+    QLineSeries * muertos2;
+    QLineSeries * infectadosD2;
+    QLineSeries * muertosD2;
 
     QCheckBox * cbinfectadosT;
     QCheckBox * cbinfectadosD;

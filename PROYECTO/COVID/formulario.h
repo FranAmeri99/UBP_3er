@@ -20,9 +20,9 @@ class Formulario : public QWidget
     Q_OBJECT
 public:
     explicit Formulario(QWidget *parent = nullptr);
-    void cargarCB();
+    void cargarCB(QComboBox * combo);
     void graficaProvinvia(QString provincia);
-    void mostrar( QString provincia , QString fecha);
+    void mostrar( QString provincia ,QString provincia2 , QString fecha);
 //    QComboBox * cbprov;
     QString get_provinvia();
 private:
@@ -36,6 +36,8 @@ private:
     AdminDB * db;
     Grafico * graficador;
 
+
+    QComboBox * cbprov2;
 private slots:
     void slot_mostra();
 };

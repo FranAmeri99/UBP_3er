@@ -6,6 +6,7 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
     layout = new QGridLayout;
     pbBuscar = new QPushButton;
     cbprov = new QComboBox;
+    cbprov2 = new QComboBox;
     defecha = new QDateEdit;
     teSelect = new QTableWidget;
     pbBuscar->setText("Buscar");
@@ -19,7 +20,8 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
     layout->addWidget(cbMuertosT,1,2,1,1);
     layout->addWidget(cbMuertosD,1,3,1,1);
 */
-    layout->addWidget(cbprov,0,0,1,2);
+    layout->addWidget(cbprov,0,0,1,1);
+    layout->addWidget(cbprov2,0,1,1,1);
     layout->addWidget(defecha,0,2,1,1);
     layout->addWidget(pbBuscar,0,3,1,1);
     layout->addWidget(teSelect, 2,0,4,4);
@@ -34,7 +36,8 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
    // db->creats();
     //COMO ya tengo los datos cargados dejo comentado la insercion
   //  db->insertar();
-    cargarCB();
+    cargarCB(cbprov);
+    cargarCB(cbprov2);
     connect( pbBuscar, SIGNAL( pressed() ) , this, SLOT( slot_mostra() ) );
 
     QStringList headers2 = { "FECHA", "PROVINCIA", "CASOS TOTALES","CASOS NUEVOS","MUERTOS TOTALES","MUERTOS NUEVOS" };
@@ -42,37 +45,36 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
 
 }
 
-void Formulario::cargarCB()
+void Formulario::cargarCB(QComboBox * combo)
 {
-    cbprov->addItem("Buenos Aires");
-    cbprov->addItem("CABA");
-    cbprov->addItem("Catamarca");
-    cbprov->addItem("Chaco");
-    cbprov->addItem("Chubut");
-    cbprov->addItem("Córdoba");
-    cbprov->addItem("Corrientes");
-    cbprov->addItem("Entre Ríos");
-    cbprov->addItem("Formosa");
-    cbprov->addItem("Jujuy");
-    cbprov->addItem("La Pampa");
-    cbprov->addItem("La Rioja");
-    cbprov->addItem("Mendoza");
-    cbprov->addItem("Misiones");
-    cbprov->addItem("Neuquén");
-    cbprov->addItem("Río Negro");
-    cbprov->addItem("Salta");
-    cbprov->addItem("San Juan");
-    cbprov->addItem("Santa Cruz");
-    cbprov->addItem("Santa Fe");
-    cbprov->addItem("Santiago del Estero");
-    cbprov->addItem("Tierra del Fuego");
-    cbprov->addItem("Tucumán");
-
+    combo->addItem("Buenos Aires");
+    combo->addItem("CABA");
+    combo->addItem("Catamarca");
+    combo->addItem("Chaco");
+    combo->addItem("Chubut");
+    combo->addItem("Córdoba");
+    combo->addItem("Corrientes");
+    combo->addItem("Entre Ríos");
+    combo->addItem("Formosa");
+    combo->addItem("Jujuy");
+    combo->addItem("La Pampa");
+    combo->addItem("La Rioja");
+    combo->addItem("Mendoza");
+    combo->addItem("Misiones");
+    combo->addItem("Neuquén");
+    combo->addItem("Río Negro");
+    combo->addItem("Salta");
+    combo->addItem("San Juan");
+    combo->addItem("Santa Cruz");
+    combo->addItem("Santa Fe");
+    combo->addItem("Santiago del Estero");
+    combo->addItem("Tierra del Fuego");
+    combo->addItem("Tucumán");
 
 }
 
 
-void Formulario::mostrar(QString provincia , QString fecha )
+void Formulario::mostrar(QString provincia , QString provincia2 , QString fecha )
 {
     QStringList headers2 = { "FECHA", "PROVINCIA", "CASOS TOTALES","CASOS NUEVOS","MUERTOS TOTALES","MUERTOS NUEVOS" };
 
@@ -82,8 +84,11 @@ void Formulario::mostrar(QString provincia , QString fecha )
     QString consulta = "SELECT * FROM datos ";
     if (provincia != "todo"){
         consulta.append("WHERE provincia = '" + provincia + "' ");
-        consulta.append(" AND fecha = '" + fecha + "'");
-   }
+
+        consulta.append("AND fecha = '" + fecha + "'");
+        consulta.append("OR  provincia = '"+ provincia2 + "' ");
+        consulta.append("AND fecha = '" + fecha + "'");
+    }
 
     QVector<QStringList> cons = db->select(consulta);
     for (int i=0;i<cons.size();i++){
@@ -93,11 +98,14 @@ void Formulario::mostrar(QString provincia , QString fecha )
         }
     }
     QString * ptr_Provincia = new QString(cbprov->currentText());
+    QString * ptr_Provincia2= new QString(cbprov2->currentText());
 
     //graficador = new Grafico( cbinfectadosT , cbinfectadosD
                                //cbMuertosT ,cbMuertosD , db , ptr_Provincia);
+    qDebug()<<*ptr_Provincia;
+    qDebug()<<*ptr_Provincia2;
 
-    graficador = new Grafico( db , ptr_Provincia); //creo grafico
+    graficador = new Grafico( db , ptr_Provincia, ptr_Provincia2); //creo grafico
     graficador->show();
     graficador->resize(600,600);
 
@@ -118,7 +126,7 @@ void Formulario::slot_mostra()
     defecha->setDisplayFormat("yyyy-MM-dd"); //Cambio formato para
                                              //adecuarlo al de la tabla
 
-    mostrar(cbprov->currentText(), defecha->text());
+    mostrar(cbprov->currentText(),cbprov2->currentText(), defecha->text());
 
 }
 

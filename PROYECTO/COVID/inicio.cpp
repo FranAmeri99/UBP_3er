@@ -19,9 +19,9 @@ inicio:: inicio ( QWidget * parent) : QWidget (parent),
         text_edit = new QTextEdit;
         progressBar = new QProgressBar( this );
         ProvinciaCSV = new QFile;
-        layout->addWidget( le_paginaweb, 1,0,1,1);
-        layout->addWidget(text_edit,6,0,4,4);
-        layout->addWidget( progressBar, 10, 0, 1, 4 );
+        layout->addWidget( le_paginaweb, 0,0,1,1);
+        layout->addWidget(text_edit,1,0,4,4);
+        layout->addWidget( progressBar, 5, 0, 1, 4 );
         formulario = new Formulario;
 
         this->setLayout(layout);
@@ -63,7 +63,6 @@ void inicio::slot_respuesta( QNetworkReply * reply )  {
 
 void inicio::slot_descargando( qint64 bytesRecibidos, qint64 bytesTotales )  {
     progressBar->setRange( 0, 100 );
-
     progressBar->setValue( 100 * int( bytesRecibidos ) / int( bytesTotales ) );
 
 }
