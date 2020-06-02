@@ -16,6 +16,7 @@ public:
     Formulario( QWidget * parent = nullptr );
 private:
     QLabel * lImagen;
+
     QGridLayout * layout;
 
 

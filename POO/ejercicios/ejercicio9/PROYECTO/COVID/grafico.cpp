@@ -13,7 +13,6 @@ Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * M
     this->MMD = MMD;
     QString Qprovincia1 = * provincia;
     QString Qprovincia2 = * provincia2;
-    QLineSeries * limite = new QLineSeries();
     infectados = new QLineSeries();
     infectados->setName("infectados Totales: " + Qprovincia1);
     infectadosD = new QLineSeries();
@@ -26,7 +25,6 @@ Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * M
     infectadosD2 = new QLineSeries();
     muertos2 = new QLineSeries();
     muertosD2 = new QLineSeries();
-    limite->setName("Limite sistema de salud");
     infectados2->setName("infectados Totales: " + Qprovincia2);
     infectadosD2->setName("infectados Totales: "+ Qprovincia2);
     muertos2->setName("Fallecidos Totales: " + Qprovincia2);
@@ -140,7 +138,6 @@ total[3] = 0;
                 qDebug()<<maximo;
             }
         }
-        limite->append(i,5000 ); //limite sistema de salud
         i++;
     }
     axisY->setRange(0.0, maximo);
@@ -151,8 +148,7 @@ total[3] = 0;
 
 
     if (*MIT == true)
-    {        chart->addSeries(limite);
-
+    {
         chart->addSeries(infectados);
      if(*provincia != *provincia2) chart->addSeries(infectados2);
 
@@ -171,14 +167,9 @@ total[3] = 0;
         chart->addSeries(muertosD);
         if(*provincia != *provincia2) chart->addSeries(muertosD2);
     }
-    QPen pen;
-    QColor red;
-red.setRed(255);
-    pen.setColor(red);
-    limite->setPen(pen);
 
     axisY->setTickCount(30);
-    axisY->setLabelFormat("%.0f");
+    axisY->setLabelFormat("%.03f");
     chart->createDefaultAxes();
     chart->setAxisX(axisXY);
 
