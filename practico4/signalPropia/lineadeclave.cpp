@@ -1,6 +1,6 @@
 #include "lineadeclave.h"
 
-LineaDeClave::LineaDeClave()
+LineaDeClave::LineaDeClave(QWidget * parent )
 {
 
 }

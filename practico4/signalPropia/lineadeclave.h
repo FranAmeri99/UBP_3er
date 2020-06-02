@@ -7,7 +7,7 @@ class LineaDeClave : public QLineEdit
     Q_OBJECT
 
 public:
-    LineaDeClave();
+    LineaDeClave(QWidget * parent = nullptr );
 };
 
 #endif // LINEADECLAVE_H
