@@ -18,7 +18,8 @@ public:
 private:
     Ui::Login * ui;
 
-private signals:
-    void
+private slots:
+    void slot_ingresar();
+    void slot_registrar();
 };
 #endif // LOGIN_H

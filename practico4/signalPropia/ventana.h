@@ -12,7 +12,7 @@ class Ventana : public QWidget
     Q_OBJECT
 
 public:
-    explicit Ventana(QWidget *parent = nullptr);
+    explicit Ventana(QWidget *parent = nullptr, QString*nombre = nullptr);
     ~Ventana();
 
 private:
