@@ -16,6 +16,9 @@ public:
     ~Login();
 
 private:
-    Ui::Login *ui;
+    Ui::Login * ui;
+
+private signals:
+    void
 };
 #endif // LOGIN_H
