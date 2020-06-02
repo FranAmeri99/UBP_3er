@@ -3,24 +3,33 @@
 #include <QDebug>
 #include <QValueAxis>
 #include "formulario.h"
-
-
-Grafico::Grafico(AdminDB* OadminDB, QString * provincia ,QString * provincia2 , QWidget *parent) : QMainWindow(parent)
+#include <QLegend>
+#include <QVXYModelMapper>
+Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * MMD, QString * provincia ,QString * provincia2 , QWidget *parent) : QMainWindow(parent)
 {
+    this->MIT = MIT;
+    this->MID = MIT;
+    this->MMT = MMT;
+    this->MMD = MMD;
+    QString Qprovincia1 = * provincia;
+    QString Qprovincia2 = * provincia2;
     infectados = new QLineSeries();
+    infectados->setName("infectados Totales: " + Qprovincia1);
     infectadosD = new QLineSeries();
+    infectadosD->setName("infectados Dia: "+ Qprovincia1);
     muertos = new QLineSeries();
+    muertos->setName("Muertos totales: " + Qprovincia1);
     muertosD = new QLineSeries();
-// //////////////// agregar combobox ////////////////
-    cbinfectadosT = new QCheckBox("Infectados Totales");
-    cbinfectadosD= new QCheckBox("Infectados Dia");
-    cbMuertosT= new QCheckBox("Muertos Totales");
-    cbMuertosD= new QCheckBox("Muertos Dia");
-// //////////////// dosp provincias /////////////////
+    muertosD->setName("Muertos Dia: "+ Qprovincia1);
     infectados2 = new QLineSeries();
+    infectados2->setName("infectados Totales: " + Qprovincia2);
     infectadosD2 = new QLineSeries();
+    infectadosD2->setName("infectados Totales: ");
     muertos2 = new QLineSeries();
+    muertos2->setName("infectados Totales: " + Qprovincia2);
     muertosD2 = new QLineSeries();
+    muertosD2->setName("infectados Dia: " + Qprovincia2);
+
     if (!OadminDB){
         db  = new AdminDB();
         db->conectar("../db/usuarios.sqlite");
@@ -44,7 +53,7 @@ Grafico::Grafico(AdminDB* OadminDB, QString * provincia ,QString * provincia2 , 
     qDebug()<<query.lastError();
    // int contador_de_registros = 0;
     int i = 0 ;
-    int maximo;
+    int maximo = 0;
     auto axisXY = new QBarCategoryAxis(this);
     QStringList dia;
     while( query.next() )  {
@@ -57,105 +66,128 @@ Grafico::Grafico(AdminDB* OadminDB, QString * provincia ,QString * provincia2 , 
         QString Numero_Dia;
        // qDebug()<<nombre;
         Numero_Dia.setNum(i);
+        int total[4];
+        total[0] = 0;
+total[1] = 0;
+total[2] = 0;
+total[3] = 0;
         if(*provincia==nombre){
-            infectados->append(i, casosT);
-            infectadosD->append(i, casosD);
-            muertos->append(i, muertosT);
-            muertosD->append(i, muertosDia);
+
+            if (*MIT == true)
+            {
+                total[0]= casosT;
+                infectados->append(i, casosT);
+            }else{
+                total[0]= 0;
+            }
+            if (*MID == true)
+            {
+                total[1]= casosD;
+                infectadosD->append(i, casosD);
+            }
+            else{
+                total[1]= 0;
+            }
+            if (*MMT == true)
+            {
+                total[2]= muertosT;
+                muertos->append(i, muertosT);
+            }
+            else{
+                total[2]= 0;
+            }
+            if (*MMD == true)
+            {
+                total[3]= muertosDia;
+                muertosD->append(i, muertosDia);
+            }
+            else{
+                total[3]= 0;
+
+            }
 
 
         } if(*provincia2==nombre){
 
-        infectados2->append(i, casosT);
-        infectadosD2->append(i, casosD);
-        muertos2->append(i, muertosT);
-        muertosD2->append(i, muertosDia);
+            if (*MIT == true)
+            {
+                total[0]= casosT;
+                infectados2->append(i, casosT);
+            }if (*MID == true)
+            {
+                total[1]= casosD;
+                infectadosD2->append(i, casosD);
+            }if (*MMT == true)
+            {
+                total[2]= muertosT;
+                muertos2->append(i, muertosT);
+            }if (*MMD == true)
+            {
+                total[3]= muertosDia;
+                muertosD2->append(i, muertosDia);
+            }
         }
         dia.append(Numero_Dia);
         axisX->append(Numero_Dia,i);
 
+        for(int i = 0; i<4; i++){
+            //qDebug()<<i;
 
-        if(maximo < casosT){
-            maximo = casosT;
-
+            if(maximo <= total[i]){
+                maximo = total[i];
+                qDebug()<<maximo;
+            }
         }
         i++;
     }
     axisY->setRange(0.0, maximo);
     axisXY->append(dia);
-    /*
-     *
-     *
-
-    if ( ptr_cbIT->isChecked() ) {
-        chart->addSeries(infectados);
-    }
-    if ( ptr_cbIT->isChecked() ) {
-        chart->addSeries(infectadosD);
-    }
-    if ( ptr_cbIT->isChecked() ) {
-        chart->addSeries(muertos);
-    }
-    if ( ptr_cbIT->isChecked() ) {
-        chart->addSeries(muertosD);
-    }
-
-      */
-
     chart = new QChart();
-    chart->legend();
     //chart->legend()->hide();
 
-    chart->addSeries(infectados);
-    chart->addSeries(infectados2);/*
-    chart->addSeries(infectadosD);
-    chart->addSeries(muertos);
-    chart->addSeries(muertosD);*/
-    axisY->setTickCount(30);
-    axisY->setLabelFormat("%.0f");
 
+
+    if (*MIT == true)
+    {
+        chart->addSeries(infectados);
+        chart->addSeries(infectados2);
+
+    }if (*MID == true)
+    {
+        chart->addSeries(infectadosD);
+        chart->addSeries(infectadosD2);
+       }
+    if (*MMT == true)
+    {
+        chart->addSeries(muertos);
+        chart->addSeries(muertos2);
+
+    }if (*MMD == true)
+    {
+        chart->addSeries(muertosD);
+        chart->addSeries(muertosD2);
+    }
+
+    axisY->setTickCount(30);
+    axisY->setLabelFormat("%.03f");
     chart->createDefaultAxes();
-//    chart->setAxisX(axisX);
     chart->setAxisX(axisXY);
 
     chart->setAxisY(axisY);
 
-    font.setPixelSize(18);
+    font.setPixelSize(30);
     chart->setTitleFont(font);
+
     chart->setTitleBrush(QBrush(Qt::black));
-    chart->setTitle("Grafico COVID \n en azul "+ *provincia+ ", en rojo "+*provincia2);
+    chart->setTitle("Grafico COVID ");
 
-    QPen penC;
-    penC.setColor("blue");
-    penC.setWidth(5);
-    infectados->setPen(penC);
-    QPen penC2;
-
-    penC2.setColor("red");
-    penC2.setWidth(5);
-    infectados2->setPen(penC2);
-    /*
-    QPen penCD;
-    penCD.setColor("green");
-    penCD.setWidth(5);
-    infectadosD->setPen(penCD);
-    QPen penM;
-    penM.setColor("red");
-    penM.setWidth(2);
-    muertos->setPen(penM);
-    QPen penMD;
-    penMD.setColor("blue");
-    penMD.setWidth(2);
-    muertosD->setPen(penMD);
-*/
     chart->setAnimationOptions(QChart::AllAnimations);
 
+
     chartView = new QChartView(chart);
-   // layout->addWidget(chartView,2,0);
-   // chartView->setLayout(layout);
+
 
     chartView->setRenderHint(QPainter::Antialiasing);
-    //this->setLayout(layout);
 
     this->setCentralWidget(chartView);
 

@@ -36,6 +36,10 @@ private:
     AdminDB * db;
     Grafico * graficador;
 
+    QCheckBox * cbinfectadosT;
+    QCheckBox * cbinfectadosD;
+    QCheckBox * cbMuertosT;
+    QCheckBox * cbMuertosD;
 
     QComboBox * cbprov2;
 private slots:

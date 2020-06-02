@@ -10,8 +10,9 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
     defecha = new QDateEdit;
     teSelect = new QTableWidget;
     pbBuscar->setText("Buscar");
-/*
+
     cbinfectadosT = new QCheckBox("Infectados Totales");
+    cbinfectadosT->click();
     cbinfectadosD= new QCheckBox("Infectados Dia");
     cbMuertosT= new QCheckBox("Muertos Totales");
     cbMuertosD= new QCheckBox("Muertos Dia");
@@ -19,7 +20,7 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
     layout->addWidget(cbinfectadosD,1,1,1,1);
     layout->addWidget(cbMuertosT,1,2,1,1);
     layout->addWidget(cbMuertosD,1,3,1,1);
-*/
+
     layout->addWidget(cbprov,0,0,1,1);
     layout->addWidget(cbprov2,0,1,1,1);
     layout->addWidget(defecha,0,2,1,1);
@@ -104,8 +105,11 @@ void Formulario::mostrar(QString provincia , QString provincia2 , QString fecha 
                                //cbMuertosT ,cbMuertosD , db , ptr_Provincia);
     qDebug()<<*ptr_Provincia;
     qDebug()<<*ptr_Provincia2;
-
-    graficador = new Grafico( db , ptr_Provincia, ptr_Provincia2); //creo grafico
+    bool * MIT = new bool(cbinfectadosT->isChecked());
+    bool * MID = new bool(cbinfectadosD->isChecked());
+    bool * MMT= new bool(cbMuertosT->isChecked());
+    bool * MMD = new bool(cbMuertosD->isChecked());
+    graficador = new Grafico( db , MIT , MID, MMT,MMD, ptr_Provincia, ptr_Provincia2); //creo grafico
     graficador->show();
     graficador->resize(600,600);
 

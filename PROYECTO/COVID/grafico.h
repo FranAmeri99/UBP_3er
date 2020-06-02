@@ -25,12 +25,15 @@ class Grafico : public QMainWindow
     Q_OBJECT
 public:
 
-    explicit Grafico( AdminDB* OadminDB = nullptr , QString * provincia = nullptr , QString * provincia2 = nullptr , QWidget *parent = nullptr );
+    explicit Grafico( AdminDB* OadminDB = nullptr , bool * MIT = nullptr , bool * MID = nullptr , bool * MMT = nullptr , bool * MMD = nullptr , QString * provincia = nullptr , QString * provincia2 = nullptr , QWidget *parent = nullptr );
 /*
     explicit Grafico(  QCheckBox * ptr_cbIT = nullptr,QCheckBox * ptr_cbID = nullptr, QCheckBox * ptr_cbMT = nullptr, QCheckBox * ptr_cbMD = nullptr, AdminDB* OadminDB = nullptr , QString * provincia = nullptr , QWidget *parent = nullptr );
 */
 private:
-
+    bool * MIT;
+    bool * MID;
+    bool * MMT;
+    bool * MMD;
     QLineSeries * infectados;
     QLineSeries * muertos;
     QLineSeries * infectadosD;
@@ -47,10 +50,6 @@ private:
     QLineSeries * infectadosD2;
     QLineSeries * muertosD2;
 
-    QCheckBox * cbinfectadosT;
-    QCheckBox * cbinfectadosD;
-    QCheckBox * cbMuertosT;
-    QCheckBox * cbMuertosD;
 
 };
 
