@@ -59,7 +59,7 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
     db->conectar( "../db/COVID.sqlite" );
     //db->creats();
     //COMO ya tengo los datos cargados dejo comentado la insercion
-    db->insertar();
+    //db->insertar();
     cargarCB(cbprov); //cardo los combo box con las provincias de argentina
     cargarCB(cbprov2);
     connect( pbBuscar, SIGNAL( pressed() ) , this, SLOT( slot_mostra() ) );

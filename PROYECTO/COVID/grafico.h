@@ -49,7 +49,7 @@ private:
     QLineSeries * infectadosD2;
     QLineSeries * muertosD2;
 
-    QLineSeries * infectadosSIR;
+    QLineSeries * InfectadosSIR;
     QLineSeries * SuceptiblesSIR;
     QLineSeries * RecuperadosSIR;
 
