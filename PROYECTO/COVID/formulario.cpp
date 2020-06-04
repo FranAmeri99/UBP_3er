@@ -2,6 +2,22 @@
 Formulario::Formulario(QWidget *parent) : QWidget(parent)
 {
     this->setWindowTitle("COVID-fran");
+    //DATOS PARA MODELO SI
+    poblacion_s = new QSpinBox;
+    dias_s = new QSpinBox;
+    beta_s = new QDoubleSpinBox;
+    gama_s = new QDoubleSpinBox;
+    //asigno dominio de valores que pueden tomar
+    dias_s->setRange(1,300);
+    poblacion_s->setRange(1,17000000);
+    beta_s->setRange(00.0,5.0);
+    gama_s->setRange(00.0,5.0);
+    //asigno valores por defecto
+    poblacion_s->setValue(100);
+    dias_s->setValue(100);
+    beta_s->setValue(100);
+    gama_s->setValue(100);
+
 
     layout = new QGridLayout;
     pbBuscar = new QPushButton;
@@ -16,33 +32,45 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
     cbinfectadosD= new QCheckBox("Infectados Dia");
     cbMuertosT= new QCheckBox("Muertos Totales");
     cbMuertosD= new QCheckBox("Muertos Dia");
-    layout->addWidget(cbinfectadosT,1,0,1,1);
-    layout->addWidget(cbinfectadosD,1,1,1,1);
-    layout->addWidget(cbMuertosT,1,2,1,1);
-    layout->addWidget(cbMuertosD,1,3,1,1);
 
     layout->addWidget(cbprov,0,0,1,1);
     layout->addWidget(cbprov2,0,1,1,1);
     layout->addWidget(defecha,0,2,1,1);
     layout->addWidget(pbBuscar,0,3,1,1);
-    layout->addWidget(teSelect, 2,0,4,4);
+
+    layout->addWidget(cbinfectadosT,1,0,1,1);
+    layout->addWidget(cbinfectadosD,1,1,1,1);
+    layout->addWidget(cbMuertosT,1,2,1,1);
+    layout->addWidget(cbMuertosD,1,3,1,1);
+
+    layout->addWidget(poblacion_s,2,0,1,1);
+    layout->addWidget(dias_s,2,1,1,1);
+    layout->addWidget(beta_s,2,2,1,1);
+    layout->addWidget(gama_s,2,3,1,1);
+
+    layout->addWidget(teSelect, 3,0,4,4);
     this->setLayout(layout);
     teSelect->setColumnCount(6);//adigno cantidad de columas
     QDate actual5;
-    actual5.setDate(2020,5,28);//seteo un dia para agilisar el tesst
+    actual5.setDate(2020,5,28);//seteo un dia para el tesst
     defecha->setDate(actual5);
     //conecto base de datos
     db = new AdminDB;
     db->conectar( "../db/COVID.sqlite" );
-   // db->creats();
+    //db->creats();
     //COMO ya tengo los datos cargados dejo comentado la insercion
-   // db->insertar();
-    cargarCB(cbprov);
+    db->insertar();
+    cargarCB(cbprov); //cardo los combo box con las provincias de argentina
     cargarCB(cbprov2);
     connect( pbBuscar, SIGNAL( pressed() ) , this, SLOT( slot_mostra() ) );
 
     QStringList headers2 = { "FECHA", "PROVINCIA", "CASOS TOTALES","CASOS NUEVOS","MUERTOS TOTALES","MUERTOS NUEVOS" };
-    teSelect->setHorizontalHeaderLabels(headers2);
+    teSelect->setHorizontalHeaderLabels(headers2); //encabezado
+
+
+    QDate inicio(2020,03,05);//se registra el primer caso en argentina
+    QDate actual=actual.currentDate(); //fecha actual
+    defecha->setDateRange(inicio,actual); // rango para la busqueda de datos
 
 }
 
@@ -95,7 +123,7 @@ void Formulario::mostrar(QString provincia , QString provincia2 , QString fecha 
     for (int i=0;i<cons.size();i++){
         teSelect->insertRow(i);
         for (int j=0;j<6;j++){
-            qDebug()<<"entro";
+//            qDebug()<<"entro";
 
             teSelect->setItem(i,j,new QTableWidgetItem(cons.at(i).at(j)));
         }
@@ -105,8 +133,8 @@ void Formulario::mostrar(QString provincia , QString provincia2 , QString fecha 
 
     //graficador = new Grafico( cbinfectadosT , cbinfectadosD
                                //cbMuertosT ,cbMuertosD , db , ptr_Provincia);
-    qDebug()<<*ptr_Provincia;
-    qDebug()<<*ptr_Provincia2;
+    //qDebug()<<*ptr_Provincia;
+    //qDebug()<<*ptr_Provincia2;
     bool * MIT = new bool(cbinfectadosT->isChecked());
     bool * MID = new bool(cbinfectadosD->isChecked());
     bool * MMT= new bool(cbMuertosT->isChecked());
@@ -117,10 +145,6 @@ void Formulario::mostrar(QString provincia , QString provincia2 , QString fecha 
 
 }
 
-QString Formulario::get_provinvia()
-{
-    return cbprov->currentText();
-}
 
 void Formulario::slot_mostra()
 {

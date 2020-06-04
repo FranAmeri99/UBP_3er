@@ -1,4 +1,4 @@
-#ifndef GRAFICP_H
+﻿#ifndef GRAFICP_H
 #define GRAFICP_H
 
 #include <QMainWindow>
@@ -26,9 +26,8 @@ class Grafico : public QMainWindow
 public:
 
     explicit Grafico( AdminDB* OadminDB = nullptr , bool * MIT = nullptr , bool * MID = nullptr , bool * MMT = nullptr , bool * MMD = nullptr , QString * provincia = nullptr , QString * provincia2 = nullptr , QWidget *parent = nullptr );
-/*
-    explicit Grafico(  QCheckBox * ptr_cbIT = nullptr,QCheckBox * ptr_cbID = nullptr, QCheckBox * ptr_cbMT = nullptr, QCheckBox * ptr_cbMD = nullptr, AdminDB* OadminDB = nullptr , QString * provincia = nullptr , QWidget *parent = nullptr );
-*/
+public:
+    void checkCheck(int casosT , int casosD, int muertosT, int muertosDia, int total[4], int i, QLineSeries * in ,QLineSeries * infectadosD,QLineSeries * muertos ,QLineSeries * muertosD );
 private:
     bool * MIT;
     bool * MID;
@@ -49,6 +48,11 @@ private:
     QLineSeries * muertos2;
     QLineSeries * infectadosD2;
     QLineSeries * muertosD2;
+
+    QLineSeries * infectadosSIR;
+    QLineSeries * SuceptiblesSIR;
+    QLineSeries * RecuperadosSIR;
+
 
 
 };

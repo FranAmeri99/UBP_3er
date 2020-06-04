@@ -1,6 +1,5 @@
 ﻿#ifndef FORMULARIO_H
 #define FORMULARIO_H
-
 #include <QWidget>
 #include "admindb.h"
 #include <QLineEdit>
@@ -15,6 +14,9 @@
 #include <QDateTime>
 #include <QTableWidget>
 #include "grafico.h"
+
+#include <QSpinBox>
+#include <QDoubleSpinBox>
 class Formulario : public QWidget
 {
     Q_OBJECT
@@ -23,8 +25,7 @@ public:
     void cargarCB(QComboBox * combo);
     void graficaProvinvia(QString provincia);
     void mostrar( QString provincia ,QString provincia2 , QString fecha);
-//    QComboBox * cbprov;
-    QString get_provinvia();
+
 private:
 
     QLineEdit * le_paginaweb;
@@ -42,6 +43,12 @@ private:
     QCheckBox * cbMuertosD;
 
     QComboBox * cbprov2;
+
+    QSpinBox * poblacion_s;
+    QSpinBox * dias_s;
+    QDoubleSpinBox * beta_s;
+    QDoubleSpinBox * gama_s;
+
 private slots:
     void slot_mostra();
 };
