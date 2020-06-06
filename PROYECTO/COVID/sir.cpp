@@ -76,7 +76,7 @@ sir::sir(AdminDB* OadminDB)
     qDebug()<<"hola";
     state_type x = { 0.999999 , 0.00001 , 0.0 }; // initial conditions
 
-    integrate( sirr , x , 0.0 , 100.0 , 0.1 , write_sir );
+    integrate( sirr , x , 0.0 , 300.0 , 0.1 , write_sir );
 
 }
 /*
