@@ -27,7 +27,11 @@ public:
 
     explicit Grafico( AdminDB* OadminDB = nullptr , bool * MIT = nullptr , bool * MID = nullptr , bool * MMT = nullptr , bool * MMD = nullptr , QString * provincia = nullptr , QString * provincia2 = nullptr , QWidget *parent = nullptr );
 public:
-    void checkCheck(int casosT , int casosD, int muertosT, int muertosDia, int total[4], int i, QLineSeries * in ,QLineSeries * infectadosD,QLineSeries * muertos ,QLineSeries * muertosD );
+
+
+    //void sir( const state_type &x , state_type &dxdt , double t );
+    //void write_sir(const state_type &x , const double t );
+
 private:
     bool * MIT;
     bool * MID;

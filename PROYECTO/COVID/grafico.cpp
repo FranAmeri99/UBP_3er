@@ -10,28 +10,7 @@
 
 #include <boost/numeric/odeint.hpp>
 
-using namespace std;
-using namespace boost::numeric::odeint;
-const double b = 0.1;
-const double g = 0.05;
-int qw = 0;
-typedef boost::array< double , 3 > state_type;
 
-void sir( const state_type &x , state_type &dxdt , double t )
-{
-    dxdt[0] = -b * x[0] * x[1]; //suceptibles
-    dxdt[1] = b * x[0] * x[1] - g * x[1]; // infectados
-    dxdt[2] = g * x[1]; //recuperados
-}
-
-void write_sir(const state_type &x , const double t )
-{
-    qw++;/*
-    SuceptiblesSIR->append(t, x[0]);
-    InfectadosSIR->append(t, x[1]);
-    RecuperadosSIR->append(t, x[2]);*/
-    cout << t << "Suceptibles: (" << x[0] << ") Infectados: (" << x[1] <<") Recuperados: ("<< x[2] <<") DIA: "<<qw<<endl;
-}
 
 Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * MMD, QString * provincia ,QString * provincia2 , QWidget *parent) : QMainWindow(parent)
 {
@@ -81,10 +60,48 @@ Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * M
     else {
         this->db  = OadminDB;
     }
+    QStringList dia;
 
     axisX = new QCategoryAxis(this);
     auto axisY = new QValueAxis(this);
 
+    QSqlQuery query2;
+int poblacion;
+    //
+    query2.exec("select * from provincia where nombre = '" + *provincia + "'");
+    while (query2.next()) {
+    poblacion =  query2.value( "poblacion" ).toInt();
+    }
+
+    qDebug()<<" + " << poblacion;
+    //
+   // int poblacion = 1000000;
+   // poblacion = pobl.toInt();
+  //  qDebug()<<poblacion;
+//    QSqlQuery query2;
+    QString consulta2 = "SELECT * from sir";
+    query2.exec(consulta2);
+    double maximo2;
+
+
+    int diaaa = 0;
+    while (query2.next()){
+        //qDebug()<<diaaa;
+        diaaa++;
+        double fecha= query2.value( 0 ).toDouble();
+        double suceptibles = query2.value( 1 ).toDouble();
+        double infecatados = query2.value( 2 ).toDouble();
+        double recuperados  = query2.value( 3 ).toDouble();
+        InfectadosSIR->append(fecha, infecatados*poblacion);
+        SuceptiblesSIR->append(fecha, suceptibles);
+        RecuperadosSIR->append(fecha, recuperados);
+        if(maximo2 < infecatados * poblacion){
+        maximo2 = infecatados * poblacion;
+        }
+       // dia.append(QString::number(fecha));
+
+        //qDebug()<<maximo2;
+    }
     //chartView->chart()->setAxisY(axisY);
     QSqlQuery query;
     QString consulta = "SELECT * from datos where provincia = '" + *provincia + "'";
@@ -96,7 +113,6 @@ Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * M
     int maximo = 0;
     int maxSitema = 10000;
     auto axisXY = new QBarCategoryAxis(this);
-    QStringList dia;
 
     while( query.next() ){
         QString nombre = query.value( "provincia" ).toString();
@@ -150,7 +166,7 @@ Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * M
         }
 
         dia.append(Numero_Dia);
-        axisX->append(Numero_Dia,i);
+       // axisX->append(Numero_Dia,i);
 
         for(int i = 0; i<4; i++){
             if(maximo <= total[i]){
@@ -163,12 +179,15 @@ Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * M
     if(maxSitema>maximo){
         maximo=maxSitema;
     }
-    axisY->setRange(0.0, maximo+50);
+    axisY->setRange(0.0, maximo2);
     axisXY->append(dia);
     chart = new QChart();
+    chart->addSeries(InfectadosSIR);
+  /*  chart->addSeries(SuceptiblesSIR);
+    chart->addSeries(RecuperadosSIR);*/
 
     if (*MIT == true){
-        chart->addSeries(limite);
+       // chart->addSeries(limite);
         chart->addSeries(infectados);
         if(*provincia != *provincia2) chart->addSeries(infectados2);
     }
@@ -203,7 +222,4 @@ Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * M
     chartView->setRenderHint(QPainter::Antialiasing);
     this->setCentralWidget(chartView);
 
-    state_type x = { 0.99 , 0.01 , 0.0 }; // initial conditions
-    integrate( sir , x , 0.0 , 200.0 , 0.1 , write_sir );
-
-    }
+}

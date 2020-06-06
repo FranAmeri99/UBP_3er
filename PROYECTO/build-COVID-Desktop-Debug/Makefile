@@ -56,7 +56,8 @@ SOURCES       = ../COVID/admindb.cpp \
 		../COVID/formulario.cpp \
 		../COVID/grafico.cpp \
 		../COVID/main.cpp \
-		../COVID/inicio.cpp moc_admindb.cpp \
+		../COVID/inicio.cpp \
+		../COVID/sir.cpp moc_admindb.cpp \
 		moc_formulario.cpp \
 		moc_grafico.cpp \
 		moc_inicio.cpp
@@ -65,6 +66,7 @@ OBJECTS       = admindb.o \
 		grafico.o \
 		main.o \
 		inicio.o \
+		sir.o \
 		moc_admindb.o \
 		moc_formulario.o \
 		moc_grafico.o \
@@ -283,11 +285,13 @@ DIST          = ../../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/spec_pre.prf
 		../COVID/COVID.pro ../COVID/admindb.h \
 		../COVID/formulario.h \
 		../COVID/grafico.h \
-		../COVID/inicio.h ../COVID/admindb.cpp \
+		../COVID/inicio.h \
+		../COVID/sir.h ../COVID/admindb.cpp \
 		../COVID/formulario.cpp \
 		../COVID/grafico.cpp \
 		../COVID/main.cpp \
-		../COVID/inicio.cpp
+		../COVID/inicio.cpp \
+		../COVID/sir.cpp
 QMAKE_TARGET  = COVID
 DESTDIR       = 
 TARGET        = COVID
@@ -739,8 +743,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.14.2/5.14.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../COVID/admindb.h ../COVID/formulario.h ../COVID/grafico.h ../COVID/inicio.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../COVID/admindb.cpp ../COVID/formulario.cpp ../COVID/grafico.cpp ../COVID/main.cpp ../COVID/inicio.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../COVID/admindb.h ../COVID/formulario.h ../COVID/grafico.h ../COVID/inicio.h ../COVID/sir.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../COVID/admindb.cpp ../COVID/formulario.cpp ../COVID/grafico.cpp ../COVID/main.cpp ../COVID/inicio.cpp ../COVID/sir.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1134,6 +1138,10 @@ moc_formulario.cpp: ../COVID/formulario.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
 		moc_predefs.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/bin/moc
 	/home/francisco/Qt5.14.2/5.14.2/gcc_64/bin/moc $(DEFINES) --include /home/francisco/Escritorio/UBP_3er/PROYECTO/build-COVID-Desktop-Debug/moc_predefs.h -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/mkspecs/linux-g++ -I/home/francisco/Escritorio/UBP_3er/PROYECTO/COVID -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtCharts -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtWidgets -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtGui -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtNetwork -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtSql -I/home/francisco/Qt5.14.2/5.14.2/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../COVID/formulario.h -o moc_formulario.cpp
@@ -1311,6 +1319,11 @@ moc_grafico.cpp: ../COVID/grafico.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qboxlayout.h \
 		../COVID/admindb.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlDatabase \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqldatabase.h \
@@ -1566,6 +1579,10 @@ moc_inicio.cpp: ../COVID/inicio.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -1844,6 +1861,10 @@ admindb.o: ../COVID/admindb.cpp ../COVID/admindb.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QCryptographicHash \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcryptographichash.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QFile
@@ -2081,7 +2102,11 @@ formulario.o: ../COVID/formulario.cpp ../COVID/formulario.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QPieSlice \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
-		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o formulario.o ../COVID/formulario.cpp
 
 grafico.o: ../COVID/grafico.cpp ../COVID/grafico.h \
@@ -2257,6 +2282,11 @@ grafico.o: ../COVID/grafico.cpp ../COVID/grafico.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qboxlayout.h \
 		../COVID/admindb.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlDatabase \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqldatabase.h \
@@ -2281,10 +2311,6 @@ grafico.o: ../COVID/grafico.cpp ../COVID/grafico.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextformat.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLayout \
-		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlayout.h \
-		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QProgressBar \
@@ -2316,7 +2342,14 @@ grafico.o: ../COVID/grafico.cpp ../COVID/grafico.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtablewidget.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtableview.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qitemselectionmodel.h
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QVXYModelMapper \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qvxymodelmapper.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QXYModelMapper \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qxymodelmapper.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o grafico.o ../COVID/grafico.cpp
 
 main.o: ../COVID/main.cpp ../COVID/inicio.h \
@@ -2553,6 +2586,10 @@ main.o: ../COVID/main.cpp ../COVID/inicio.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -2814,6 +2851,10 @@ inicio.o: ../COVID/inicio.cpp ../COVID/inicio.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/QNetworkAccessManager \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtNetwork/qtnetworkglobal.h \
@@ -2842,6 +2883,9 @@ inicio.o: ../COVID/inicio.cpp ../COVID/inicio.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/QImage \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QByteArray
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o inicio.o ../COVID/inicio.cpp
+
+sir.o: ../COVID/sir.cpp ../COVID/sir.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sir.o ../COVID/sir.cpp
 
 moc_admindb.o: moc_admindb.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_admindb.o moc_admindb.cpp

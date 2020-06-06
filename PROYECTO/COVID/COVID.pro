@@ -5,11 +5,13 @@ SOURCES += \
     formulario.cpp \
     grafico.cpp \
     main.cpp \
-    inicio.cpp
+    inicio.cpp \
+    sir.cpp
 
 HEADERS += \
     admindb.h \
     formulario.h \
     grafico.h \
-    inicio.h
+    inicio.h \
+    sir.h
 

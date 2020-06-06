@@ -1,6 +1,9 @@
 #include "formulario.h"
+#include "sir.h"
+
 Formulario::Formulario(QWidget *parent) : QWidget(parent)
 {
+
     this->setWindowTitle("COVID-fran");
     //DATOS PARA MODELO SI
     poblacion_s = new QSpinBox;
@@ -57,7 +60,9 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
     //conecto base de datos
     db = new AdminDB;
     db->conectar( "../db/COVID.sqlite" );
-    //db->creats();
+   // db->creats();
+    db->creatsSir();
+   // db->CrearProvincias();
     //COMO ya tengo los datos cargados dejo comentado la insercion
     //db->insertar();
     cargarCB(cbprov); //cardo los combo box con las provincias de argentina
@@ -71,11 +76,21 @@ Formulario::Formulario(QWidget *parent) : QWidget(parent)
     QDate inicio(2020,03,05);//se registra el primer caso en argentina
     QDate actual=actual.currentDate(); //fecha actual
     defecha->setDateRange(inicio,actual); // rango para la busqueda de datos
+    sir modelo;
 
 }
 
 void Formulario::cargarCB(QComboBox * combo)
 {
+    QStringList listaProv = {"Buenos Aires","CABA","Catamarca","Chaco",
+                             "Chubut","Córdoba","Corrientes","Entre "
+                             "Ríos","Formosa","Jujuy","La Pampa",
+                             "La Rioja","Mendoza","Misiones","Neuquén",
+                             "Río Negro","Salta","San Juan","Santa Cruz",
+                             "Santiago del Estero","Tierra del Fuego","Tucumán"};
+    for (int i = 0 ; i< listaProv.size(); i++) {
+        combo->addItem(listaProv[i]);
+    }/*
     combo->addItem("Buenos Aires");
     combo->addItem("CABA");
     combo->addItem("Catamarca");
@@ -99,7 +114,7 @@ void Formulario::cargarCB(QComboBox * combo)
     combo->addItem("Santiago del Estero");
     combo->addItem("Tierra del Fuego");
     combo->addItem("Tucumán");
-
+*/
 }
 
 
@@ -139,6 +154,7 @@ void Formulario::mostrar(QString provincia , QString provincia2 , QString fecha 
     bool * MID = new bool(cbinfectadosD->isChecked());
     bool * MMT= new bool(cbMuertosT->isChecked());
     bool * MMD = new bool(cbMuertosD->isChecked());
+
     graficador = new Grafico( db , MIT , MID, MMT,MMD, ptr_Provincia, ptr_Provincia2); //creo grafico
     graficador->show();
     graficador->resize(600,600);

@@ -73,16 +73,31 @@ void AdminDB::creats()
     QByteArray borrar = "DROP TABLE datos";
     QSqlQuery query( db );
     query.exec(borrar);
+    //query.exec(borrar);
     qDebug()<<"Admin Create";
-        QByteArray crear = "CREATE TABLE IF NOT EXISTS datos";
-        crear.append(" (fecha VARCHAR, provincia VARCHAR, casos_totales VARCHAR,"
-                      " casos_nuevos VARCHAR, muertes_total VARCHAR, muertes_nuevos"
-                      " VARCHAR, descripcion VARCHAR)");
-        QSqlQuery query2( db );
-        query2.exec(crear);
-            qDebug() << query2.lastError();  // Devuelve un objeto de QSqlError
+    QByteArray crear = "CREATE TABLE IF NOT EXISTS datos";
+    crear.append(" (fecha VARCHAR, provincia VARCHAR, "
+                 "casos_totales VARCHAR, casos_nuevos "
+                 "VARCHAR, muertes_total VARCHAR, "
+                 "muertes_nuevos VARCHAR, descripcion VARCHAR)");
+    QSqlQuery query2( db );
+    query2.exec(crear);
+    qDebug() << query2.lastError();  // Devuelve un objeto de QSqlError // Devuelve un objeto de QSqlError
 
+}
 
+void AdminDB::creatsSir()
+{
+
+    QSqlQuery query( db );
+    QByteArray borrar_sir = "DROP TABLE sir";
+    query.exec(borrar_sir);
+    QByteArray crear_sir = "CREATE TABLE IF NOT EXISTS sir";
+    crear_sir.append(" (fecha double, susecptible double, "
+                 "infectados double, recuperados double)");
+    QSqlQuery query3( db );
+    query3.exec(crear_sir);
+    qDebug() << query3.lastError();
 }
 
 void AdminDB::insertar()
@@ -114,7 +129,7 @@ void AdminDB::insertar()
         //como la primera linea del csv contiene los nombres de las columas la omito en la insercion
         if(!line.startsWith("provincia")){
             contadore++;
-            qDebug()<<contadore;
+            //qDebug()<<contadore;
         QString std = QString(line);
         QString std2 = std.mid(0,(std.size()-2));//para omitir la barra n
         int agregar = std2.count(',')+1; //cantida de comas que pose la linea
@@ -153,12 +168,13 @@ void AdminDB::insertar()
 
         QSqlQuery inser;
         if(inser.exec(queryI)){ //controlo que todo salga ok
-            //qDebug()<<"  Insertado ";
+            //
+            qDebug()<<"  Insertado ";
             //qDebug()<<"INSERCION numeros de coma"<< agregar << ", posicion"<<posicion;
         }else{
-            qDebug()<<queryI;
-               qDebug()<<"\nNO INSERCION numeros de coma"<< agregar << ", posicion"<<posicion<<"\n";
-               qDebug()<<inser.lastError();
+          //  qDebug()<<queryI;
+            //   qDebug()<<"\nNO INSERCION numeros de coma"<< agregar << ", posicion"<<posicion<<"\n";
+               //qDebug()<<inser.lastError();
                contador ++;
         }
         queryI.append("\n");
@@ -170,6 +186,39 @@ void AdminDB::insertar()
     qDebug()<<"CONTADOR DE ERRORES"<<contador;
     Insertar->close();
     ProvinciaCSV->close();
+
+}
+
+void AdminDB::CrearProvincias()
+{
+
+    QStringList listaProv = {"Buenos Aires","CABA","Catamarca","Chaco",
+                             "Chubut","Córdoba","Corrientes","Entre "
+                             "Ríos","Formosa","Jujuy","La Pampa",
+                             "La Rioja","Mendoza","Misiones","Neuquén",
+                             "Río Negro","Salta","San Juan","Santa Cruz",
+                             "Santiago del Estero","Tierra del Fuego","Tucumán"};
+    QStringList listaPoblacion = {"15594428","2891082","3304825","3300736","2891082",
+                                  "1741610","1592878","1236300","1215207","1097829",
+                                  "1053466","993338","896461","680427","672260",
+                                  "633374","550344","527895","506668","461588",
+                                  "367820","331847","316940","272524","126190"};
+
+    QSqlQuery query( db );
+    query.exec("DROP TABLE provincia");
+    qDebug()<<"Admin Create";
+    QByteArray crear = "CREATE TABLE IF NOT EXISTS provincia";
+    crear.append(" (nombre VARCHAR, poblacion int)");
+    QSqlQuery query2( db );
+    query2.exec(crear);
+
+    for (int i = 0 ; i< listaProv.size() ; i++) {
+        QByteArray insertar = "INSERT INTO provincia (nombre, poblacion) values"
+                              "('" + listaProv[i].toUtf8() +"', '"
+                                +  listaPoblacion[i].toUtf8()+ "')";
+        query2.exec(insertar);
+        qDebug()<<query2.lastError();
+    }
 
 }
 

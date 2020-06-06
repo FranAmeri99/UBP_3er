@@ -26,9 +26,13 @@ public:
 
     void creats();
 
+    void creatsSir();
+
     void insertar();
 
     void InsertarTable();
+
+    void CrearProvincias();
 
 
 private:
