@@ -89,13 +89,13 @@ void AdminDB::creats()
 void AdminDB::creatsSir()
 {
 
-    QSqlQuery query( db );
+    QSqlQuery query;
     QByteArray borrar_sir = "DROP TABLE sir";
     query.exec(borrar_sir);
     QByteArray crear_sir = "CREATE TABLE IF NOT EXISTS sir";
     crear_sir.append(" (fecha double, susecptible double, "
                  "infectados double, recuperados double)");
-    QSqlQuery query3( db );
+    QSqlQuery query3;
     query3.exec(crear_sir);
     qDebug() << query3.lastError();
 }

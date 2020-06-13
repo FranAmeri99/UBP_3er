@@ -26,7 +26,7 @@ public:
 
     void creats();
 
-    void creatsSir();
+    static void creatsSir();
 
     void insertar();
 

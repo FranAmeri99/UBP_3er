@@ -73,7 +73,6 @@ int poblacion;
     poblacion =  query2.value( "poblacion" ).toInt();
     }
 
-    qDebug()<<" + " << poblacion;
     //
    // int poblacion = 1000000;
    // poblacion = pobl.toInt();
@@ -178,8 +177,11 @@ int poblacion;
     }
     if(maxSitema>maximo){
         maximo=maxSitema;
+    }if(maximo2>maximo){
+        maximo=maximo2;
     }
-    axisY->setRange(0.0, maximo2);
+
+    axisY->setRange(0.0, maximo);
     axisXY->append(dia);
     chart = new QChart();
     chart->addSeries(InfectadosSIR);
@@ -208,7 +210,7 @@ int poblacion;
     red.setRed(255);
     pen.setColor(red);
     limite->setPen(pen);
-    axisY->setTickCount(30);//divido al eje y en 30
+    axisY->setTickCount(10);//divido al eje y en 30
     axisY->setLabelFormat("%.0f");//con valores enteros
     chart->createDefaultAxes();
     chart->setAxisX(axisXY);

@@ -14,7 +14,8 @@
 #include <QDateTime>
 #include <QTableWidget>
 #include "grafico.h"
-
+#include "sir.h"
+#include <QMessageBox>
 #include <QSpinBox>
 #include <QDoubleSpinBox>
 class Formulario : public QWidget
@@ -41,15 +42,20 @@ private:
     QCheckBox * cbinfectadosD;
     QCheckBox * cbMuertosT;
     QCheckBox * cbMuertosD;
-
+//    Formulario * formulario;
+    //sir * sir;
     QComboBox * cbprov2;
 
     QSpinBox * poblacion_s;
-    QSpinBox * dias_s;
+    QDoubleSpinBox * dias_s;
     QDoubleSpinBox * beta_s;
     QDoubleSpinBox * gama_s;
+    QLabel * lDias;
+
+    QPushButton * pbActualizar;
 
 private slots:
     void slot_mostra();
+    void slot_actualizare();
 };
 #endif // FORMULARIO_H

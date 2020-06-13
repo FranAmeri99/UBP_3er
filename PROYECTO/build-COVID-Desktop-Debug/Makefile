@@ -1139,6 +1139,7 @@ moc_formulario.cpp: ../COVID/formulario.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../COVID/sir.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
@@ -1580,6 +1581,7 @@ moc_inicio.cpp: ../COVID/inicio.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../COVID/sir.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
@@ -1862,6 +1864,7 @@ admindb.o: ../COVID/admindb.cpp ../COVID/admindb.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../COVID/sir.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
@@ -2104,6 +2107,7 @@ formulario.o: ../COVID/formulario.cpp ../COVID/formulario.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../COVID/sir.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox
@@ -2343,6 +2347,7 @@ grafico.o: ../COVID/grafico.cpp ../COVID/grafico.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtableview.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractitemview.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../COVID/sir.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
@@ -2587,6 +2592,7 @@ main.o: ../COVID/main.cpp ../COVID/inicio.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../COVID/sir.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
@@ -2852,6 +2858,7 @@ inicio.o: ../COVID/inicio.cpp ../COVID/inicio.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../COVID/sir.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
@@ -2884,7 +2891,248 @@ inicio.o: ../COVID/inicio.cpp ../COVID/inicio.h \
 		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QByteArray
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o inicio.o ../COVID/inicio.cpp
 
-sir.o: ../COVID/sir.cpp ../COVID/sir.h
+sir.o: ../COVID/sir.cpp ../COVID/sir.h \
+		../COVID/admindb.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlDatabase \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqldatabase.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qtsqlglobal.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qtsql-config.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QString \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QStringList \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVector \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QObject \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDebug \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qset.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlError \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqlerror.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlRecord \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqlrecord.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/QSqlQuery \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtSql/qsqlquery.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qmatrix.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qline.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qurlquery.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QValueAxis \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qvalueaxis.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QAbstractAxis \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qabstractaxis.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QChartGlobal \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qchartglobal.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QtGlobal \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/QPen \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpen.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/QFont \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QVariant \
+		../COVID/formulario.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QWidget \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLineEdit \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLayout \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QProgressBar \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qprogressbar.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QComboBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcombobox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDateEdit \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qdatetimeedit.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qcalendar.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QDateTime \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QTableWidget \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtablewidget.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qtableview.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../COVID/grafico.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QMainWindow \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qmainwindow.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QChartView \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qchartview.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QAbstractSeries \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qabstractseries.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QChart \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qchart.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QLegend \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qlegend.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGraphicsWidget \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qgraphicswidget.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qgraphicslayoutitem.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/QBrush \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCore/QMargins \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGraphicsView \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qgraphicsview.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtGui/qpainter.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QBarSeries \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qbarseries.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QAbstractBarSeries \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qabstractbarseries.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QBarSet \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qbarset.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QBarCategoryAxis \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qbarcategoryaxis.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QHorizontalStackedBarSeries \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qhorizontalstackedbarseries.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QLineSeries \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qlineseries.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QXYSeries \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qxyseries.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QCategoryAxis \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qcategoryaxis.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QPieSeries \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieseries.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QPieSlice \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qpieslice.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QCheckBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtWidgets/QDoubleSpinBox \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QVXYModelMapper \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qvxymodelmapper.h \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/QXYModelMapper \
+		../../../../Qt5.14.2/5.14.2/gcc_64/include/QtCharts/qxymodelmapper.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sir.o ../COVID/sir.cpp
 
 moc_admindb.o: moc_admindb.cpp 
