@@ -25,7 +25,7 @@ class Grafico : public QMainWindow
     Q_OBJECT
 public:
 
-    explicit Grafico( AdminDB* OadminDB = nullptr , bool * MIT = nullptr , bool * MID = nullptr , bool * MMT = nullptr , bool * MMD = nullptr , QString * provincia = nullptr , QString * provincia2 = nullptr , QWidget *parent = nullptr );
+    explicit Grafico( AdminDB* OadminDB = nullptr , bool * MIT = nullptr , bool * MID = nullptr , bool * MMT = nullptr , bool * MMD = nullptr , bool * SIR = nullptr , QString * provincia = nullptr , QString * provincia2 = nullptr , QWidget *parent = nullptr );
 public:
 
 

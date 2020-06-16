@@ -30,11 +30,11 @@ void sirr( const state_type &x , state_type &dxdt , double t )
 
 void write_sir(const state_type &x , const double t )
 {
-    /*qw++;
-    SuceptiblesSIR->append(t, x[0]);
+    qw++;
+   /* SuceptiblesSIR->append(t, x[0]);
     InfectadosSIR->append(t, x[1]);
     RecuperadosSIR->append(t, x[2]);*/
-  //  qDebug()<<"Dia: [" << t << "] Suceptibles: (" << x[0] << ") Infectados: (" << x[1] <<") Recuperados: ("<< x[2] <<") DIA: "<<qw<<endl;
+    qDebug()<<"Dia: [" << t << "] Suceptibles: (" << x[0] << ") Infectados: (" << x[1] <<") Recuperados: ("<< x[2] <<") DIA: "<<qw<<endl;
     QString dia = QString::number(t);
     QString sucep = QString::number(x[0]);
     QString infe = QString::number(x[1]);
@@ -45,7 +45,7 @@ void write_sir(const state_type &x , const double t )
                         "infectados, recuperados) VALUES ('";
     queryI.append(dia + "','" + sucep + "','" + infe +"','" + recu +"') ");
     insertar.exec(queryI);
-    qDebug()<<insertar.lastError();
+    //qDebug()<<insertar.lastError();
 
 }
 
@@ -68,5 +68,6 @@ void sir::cargar()
 
     state_type x = { 0.999993587 , 0.000006413 , 0.0 }; // initial conditions
     qDebug()<<"dias cargados:::"<<*dias;
-    integrate( sirr , x , 0.0 , *dias , 0.1, write_sir );
+
+    integrate( sirr , x , 0.0 , *dias , 1.0 , write_sir );
 }

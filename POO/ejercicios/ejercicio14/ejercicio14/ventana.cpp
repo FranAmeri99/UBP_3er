@@ -17,7 +17,7 @@ void Ventana::on_pushButton_clicked()
 {
     QString file_name = QFileDialog::getOpenFileName( this, "Abrir", "./", "Imagen (*.png *.jpg)" );
 
-    QMessageBox::information(this,"Archivo Sellecionado",file_name);
+    QMessageBox::information(this,"Archivo Selecionado",file_name);
     qDebug()<<"ruta del archivo: "<<file_name;
     if(file_name!=NULL){
 
@@ -30,9 +30,7 @@ void Ventana::on_pushButton_clicked()
         qDebug()<<"Ruta anterior::"<<nombre;
 
     }
-    //setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-ui->Limagen->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-
+    ui->Limagen->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 }
 
 void Ventana::on_Rotar_clicked()

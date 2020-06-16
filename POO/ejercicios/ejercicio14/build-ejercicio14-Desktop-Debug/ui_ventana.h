@@ -27,8 +27,8 @@ public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QPushButton *pushButton;
-    QLabel *Limagen;
     QPushButton *Rotar;
+    QLabel *Limagen;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -46,15 +46,15 @@ public:
 
         gridLayout->addWidget(pushButton, 0, 0, 1, 1);
 
-        Limagen = new QLabel(centralwidget);
-        Limagen->setObjectName(QString::fromUtf8("Limagen"));
-
-        gridLayout->addWidget(Limagen, 1, 0, 1, 1);
-
         Rotar = new QPushButton(centralwidget);
         Rotar->setObjectName(QString::fromUtf8("Rotar"));
 
         gridLayout->addWidget(Rotar, 0, 1, 1, 1);
+
+        Limagen = new QLabel(centralwidget);
+        Limagen->setObjectName(QString::fromUtf8("Limagen"));
+
+        gridLayout->addWidget(Limagen, 1, 0, 1, 2);
 
         Ventana->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Ventana);
@@ -74,8 +74,8 @@ public:
     {
         Ventana->setWindowTitle(QCoreApplication::translate("Ventana", "Ventana", nullptr));
         pushButton->setText(QCoreApplication::translate("Ventana", "Buscar Archivo", nullptr));
-        Limagen->setText(QString());
         Rotar->setText(QCoreApplication::translate("Ventana", "Rotar", nullptr));
+        Limagen->setText(QString());
     } // retranslateUi
 
 };

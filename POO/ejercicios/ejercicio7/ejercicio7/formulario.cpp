@@ -7,15 +7,8 @@ Formulario::Formulario( QWidget * parent ) : QWidget( parent ){
     this->setWindowTitle("Ventana");
     layout = new QGridLayout();
     lImagen = new QLabel;
-//    lImagen = new QLabel("<img src='../imagen/index.png' />");
 
     QMovie* movie = new QMovie("../imagen/cargando.gif");
-
-    // Make sure the GIF was loaded correctly
-    if (!movie->isValid())
-    {
-            qDebug()<<"pepe";
-    }
 
     // Play GIF
     QLabel* label = new QLabel(this);

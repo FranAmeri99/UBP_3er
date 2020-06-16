@@ -20,10 +20,14 @@ bool AdminDB::conectar( QString archivoSqlite )  {
 
     db.setDatabaseName( archivoSqlite );
 
-    if( db.open() )
-        return true;
+    if( db.open() ){
 
-    return false;
+        qDebug()<< "Entro";
+            return true;
+    }else{
+        qDebug()<< "No entro";
+        return false;
+    }
 }
 
 QSqlDatabase AdminDB::getDB()  {
@@ -187,16 +191,13 @@ void AdminDB::insertar(QString user, QString pas, QString Nom, QString Ape)
     if(NoRepetido(us)){
         if(query.exec(insertion)){
             qDebug()<<"Se inserto";
-            //QMessageBox::information( this, "Se inserto", "Bienvenido "+ no + " " + ap );
         }
         else{
-            //QMessageBox::information( this, "Problemas", " Consulte con el desarollador");
             qDebug()<<"Problemas";
         }
     }
     else{
 
-        //QMessageBox::warning( this, "Intente de nuevo", "Usuario repetido" );
         qDebug()<<"Usuario repetido";
     }
 
@@ -210,7 +211,6 @@ void AdminDB::borrar(QString user, QString pas)
     QString borrar = "DELETE FROM usuarios WHERE usuario ='"+ user +"'";
     if (!query.exec(borrar)) {
         qDebug()<<"no borro";
-        //QMessageBox::warning( this, "no borro", "Hubo algun problema" );
         qDebug()<<query.lastError();
     }
 

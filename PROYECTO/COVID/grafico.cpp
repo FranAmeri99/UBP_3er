@@ -12,7 +12,7 @@
 
 
 
-Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * MMD, QString * provincia ,QString * provincia2 , QWidget *parent) : QMainWindow(parent)
+Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * MMD, bool * SIR, QString * provincia ,QString * provincia2 , QWidget *parent) : QMainWindow(parent)
 {
     this->MIT = MIT;
     this->MID = MIT;
@@ -23,13 +23,14 @@ Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * M
     QString Qprovincia2 = * provincia2;
     QLineSeries * limite = new QLineSeries();
     limite->setName("Limite sistema de salud");
+        InfectadosSIR = new QLineSeries();
+        SuceptiblesSIR = new QLineSeries();
+        RecuperadosSIR = new QLineSeries();
+        InfectadosSIR ->setName("Infectados SIR");
+        SuceptiblesSIR ->setName("Suceptibles SIR");
+        RecuperadosSIR ->setName("Recuperados SIR");
 
-    InfectadosSIR = new QLineSeries();
-    SuceptiblesSIR = new QLineSeries();
-    RecuperadosSIR = new QLineSeries();
-    InfectadosSIR ->setName("Infectados SIR");
-    SuceptiblesSIR ->setName("Suceptibles SIR");
-    RecuperadosSIR ->setName("Recuperados SIR");
+
 
     infectados = new QLineSeries();
     infectados->setName("infectados Totales: " + Qprovincia1);
@@ -66,23 +67,15 @@ Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * M
     auto axisY = new QValueAxis(this);
 
     QSqlQuery query2;
-int poblacion;
-    //
+    int poblacion;
     query2.exec("select * from provincia where nombre = '" + *provincia + "'");
     while (query2.next()) {
     poblacion =  query2.value( "poblacion" ).toInt();
     }
 
-    //
-   // int poblacion = 1000000;
-   // poblacion = pobl.toInt();
-  //  qDebug()<<poblacion;
-//    QSqlQuery query2;
     QString consulta2 = "SELECT * from sir";
     query2.exec(consulta2);
     double maximo2;
-
-
     int diaaa = 0;
     while (query2.next()){
         //qDebug()<<diaaa;
@@ -92,22 +85,29 @@ int poblacion;
         double infecatados = query2.value( 2 ).toDouble();
         double recuperados  = query2.value( 3 ).toDouble();
         InfectadosSIR->append(fecha, infecatados*poblacion);
+        qDebug()<<"infecatados*poblacion="<<infecatados*poblacion;
         SuceptiblesSIR->append(fecha, suceptibles);
         RecuperadosSIR->append(fecha, recuperados);
         if(maximo2 < infecatados * poblacion){
         maximo2 = infecatados * poblacion;
         }
-       // dia.append(QString::number(fecha));
+       dia.append(QString::number(fecha));
+       // axisX->append(QString::number(fecha),fecha);
 
         //qDebug()<<maximo2;
     }
-    //chartView->chart()->setAxisY(axisY);
+    for (int i = 0 ; i <100;i++){
+
+     //   dia.append(QString::number(i));
+        qDebug()<<i;
+
+
+
+    }   //chartView->chart()->setAxisY(axisY);
     QSqlQuery query;
     QString consulta = "SELECT * from datos where provincia = '" + *provincia + "'";
     consulta.append("OR  provincia = '" + *provincia2 + "'");
     query.exec( consulta );
-   // qDebug()<<query.lastError();
-   // int contador_de_registros = 0;
     int i = 0 ;
     int maximo = 0;
     int maxSitema = 10000;
@@ -165,7 +165,7 @@ int poblacion;
         }
 
         dia.append(Numero_Dia);
-       // axisX->append(Numero_Dia,i);
+    //   axisX->append(Numero_Dia,i);
 
         for(int i = 0; i<4; i++){
             if(maximo <= total[i]){
@@ -175,16 +175,19 @@ int poblacion;
         limite->append(i,maxSitema ); //limite sistema de salud
         i++;
     }
+    /*
     if(maxSitema>maximo){
         maximo=maxSitema;
-    }if(maximo2>maximo){
+    }*/
+
+    if(maximo2>maximo){
         maximo=maximo2;
     }
 
     axisY->setRange(0.0, maximo);
     axisXY->append(dia);
     chart = new QChart();
-    chart->addSeries(InfectadosSIR);
+    //chart->addSeries(InfectadosSIR);
   /*  chart->addSeries(SuceptiblesSIR);
     chart->addSeries(RecuperadosSIR);*/
 
@@ -205,12 +208,13 @@ int poblacion;
         chart->addSeries(muertosD);
         if(*provincia != *provincia2) chart->addSeries(muertosD2);
     }
+
     QPen pen;
     QColor red;
     red.setRed(255);
     pen.setColor(red);
-    limite->setPen(pen);
-    axisY->setTickCount(10);//divido al eje y en 30
+    limite->setPen(pen);//SITEMA DE SALUD
+    axisY->setTickCount(30);//divido al eje y en 30
     axisY->setLabelFormat("%.0f");//con valores enteros
     chart->createDefaultAxes();
     chart->setAxisX(axisXY);

@@ -28,7 +28,7 @@ Login::Login( QWidget * parent ) : QWidget ( parent ){
     layout->addWidget( lePassword ,1, 2, 1 ,1);
 
 
-    adminDB = new AdminDB;
+    adminDB = new AdminDB();
     adminDB->conectar( "../db/usuarios.sqlite" );
     adminDB->creats();
     adminDB->registrar( "Aplicación abierta" );

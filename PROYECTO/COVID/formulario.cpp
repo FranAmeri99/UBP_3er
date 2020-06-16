@@ -125,10 +125,11 @@ void Formulario::mostrar(QString provincia , QString provincia2 , QString fecha 
     bool * MID = new bool(cbinfectadosD->isChecked());
     bool * MMT= new bool(cbMuertosT->isChecked());
     bool * MMD = new bool(cbMuertosD->isChecked());
+    bool * SIR = new bool(false);
 
 
 
-    graficador = new Grafico( db , MIT , MID, MMT,MMD,
+    graficador = new Grafico( db , MIT , MID, MMT,MMD,SIR,
                               ptr_Provincia, ptr_Provincia2); //creo grafico
     graficador->show();
     graficador->resize(600,600);
@@ -177,21 +178,31 @@ void Formulario::slot_mostra()
 void Formulario::slot_actualizare()
 {
     QMessageBox msgBox;
-    msgBox.information(this,"Insertando",
-                       "Se Insertaron los datos\n"
-                       "esto puede tardar un tiempo "
-                       "espere a que aparesaca un "
-                       "nuevo mensaje OK");
+    msgBox.setWindowTitle("Insertando");
+    msgBox.setText("Se Insertaron los datos\n"
+                   "esto puede tardar un tiempo "
+                   "espere a que aparesaca un "
+                   "nuevo mensaje OK");
 
-    qDebug()<<"actualizando ....";
-    db->creats();
-    //db->CrearProvincias();
-    //COMO ya tengo los datos cargados dejo comentado la insercion
-    db->insertar();
-    qDebug()<<"Fin  ....";
-    msgBox.information(this,"Insertando",
-                       "LISTO");
-  //  msgBox.exec();
+
+    msgBox.setStandardButtons(QMessageBox::Yes);
+    msgBox.addButton(QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
+    if(msgBox.exec() == QMessageBox::Yes){
+
+        qDebug()<<"actualizando ....";
+        db->creats();
+        //db->CrearProvincias();
+        //COMO ya tengo los datos cargados dejo comentado la insercion
+        db->insertar();
+        qDebug()<<"Fin  ....";
+        msgBox.information(this,"Insertando",
+                           "LISTO");
+    }else {
+        msgBox.warning(this,"Actualizar",
+                           "No se Actualizo");
+    }
+
 
 }
 
