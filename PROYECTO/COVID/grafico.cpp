@@ -214,7 +214,7 @@ Grafico::Grafico(AdminDB* OadminDB, bool * MIT, bool * MID, bool * MMT, bool * M
     red.setRed(255);
     pen.setColor(red);
     limite->setPen(pen);//SITEMA DE SALUD
-    axisY->setTickCount(30);//divido al eje y en 30
+    axisY->setTickCount(20);//divido al eje y en 30
     axisY->setLabelFormat("%.0f");//con valores enteros
     chart->createDefaultAxes();
     chart->setAxisX(axisXY);

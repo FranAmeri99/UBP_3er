@@ -1,4 +1,4 @@
-#ifndef SIR_H
+/*#ifndef SIR_H
 #define SIR_H
 
 #include <boost/array.hpp>
@@ -22,3 +22,4 @@ public:
 };
 
 #endif // SIR_H
+*/

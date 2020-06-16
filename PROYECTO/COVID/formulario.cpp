@@ -157,7 +157,7 @@ void Formulario::slot_mostra()
 
     }
    // qDebug()<<"poblacin formulario1: "<<poblacion;
-    sir * Sir;
+    /*sir * Sir;
     Sir = new sir;
     int * N = new int();
     *N = poblacion;
@@ -169,7 +169,7 @@ void Formulario::slot_mostra()
 
 
     Sir->cargar();
-
+*/
     mostrar(cbprov->currentText(),cbprov2->currentText(), defecha->text());
 
 

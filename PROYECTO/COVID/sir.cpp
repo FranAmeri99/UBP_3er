@@ -1,4 +1,4 @@
-#include "sir.h"
+/*#include "sir.h"
 #include <QApplication>
 #include <QDebug>
 #include <QValueAxis>
@@ -31,9 +31,6 @@ void sirr( const state_type &x , state_type &dxdt , double t )
 void write_sir(const state_type &x , const double t )
 {
     qw++;
-   /* SuceptiblesSIR->append(t, x[0]);
-    InfectadosSIR->append(t, x[1]);
-    RecuperadosSIR->append(t, x[2]);*/
     qDebug()<<"Dia: [" << t << "] Suceptibles: (" << x[0] << ") Infectados: (" << x[1] <<") Recuperados: ("<< x[2] <<") DIA: "<<qw<<endl;
     QString dia = QString::number(t);
     QString sucep = QString::number(x[0]);
@@ -70,4 +67,4 @@ void sir::cargar()
     qDebug()<<"dias cargados:::"<<*dias;
 
     integrate( sirr , x , 0.0 , *dias , 1.0 , write_sir );
-}
+}*/

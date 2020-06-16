@@ -10,7 +10,7 @@
 #include <QTextEdit>
 #include <QLabel>
 #include <QComboBox>
-#include <QDateEdit>
+#include <QDateEdit>#
 #include <QDateTime>
 #include <QTableWidget>
 #include "grafico.h"
